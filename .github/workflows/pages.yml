@@ -1,0 +1,50 @@
+name: pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Resolve site URL
+        id: url
+        run: |
+          origin="${{ steps.pages.outputs.origin }}"
+          base="${{ steps.pages.outputs.base_path }}"
+          if [ -z "$origin" ]; then origin="https://aministan.github.io"; fi
+          if [ -z "$base" ]; then base="/sunglassdealsdaily"; fi
+          echo "origin=$origin" >> "$GITHUB_OUTPUT"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+      - name: Build
+        run: python3 scripts/links.py && python3 scripts/build.py && python3 scripts/validate.py
+        env:
+          SITE_URL: ${{ steps.url.outputs.origin }}
+          PATH_PREFIX: ${{ steps.url.outputs.base }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

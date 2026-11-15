@@ -1,0 +1,1118 @@
+{
+  "updated": "2026-11-15",
+  "owner": "Amin Peracha",
+  "site_name": "SunglassDealsDaily",
+  "future_domain": "sunglassdealsdaily.com",
+  "price_note": "offers[].price is set only when that exact merchant product page showed the number on price_checked. A CJ product feed fills the same fields later: match merchants[].cj.advertiser_id to the feed advertiser and offers[].sku to the feed SKU. Leave price null when the feed row has no price.",
+  "feed_row": {
+    "advertiser_id": "",
+    "sku": "",
+    "price": null,
+    "currency": "USD",
+    "url": null
+  },
+  "merchants": {
+    "ray-ban": {
+      "name": "Ray-Ban",
+      "home": "https://www.ray-ban.com/usa",
+      "cj": {"advertiser_id": "3175074", "status": "application_pending", "click_base": null}
+    },
+    "oakley": {
+      "name": "Oakley",
+      "home": "https://www.oakley.com/en-us",
+      "cj": {"advertiser_id": "1463156", "status": "application_pending", "click_base": null}
+    },
+    "sunglass-hut": {
+      "name": "Sunglass Hut",
+      "home": "https://www.sunglasshut.com/us",
+      "cj": {"advertiser_id": "4025749", "status": "application_pending", "click_base": null}
+    },
+    "costa": {
+      "name": "Costa Del Mar",
+      "home": "https://www.costadelmar.com/en-us",
+      "cj": {"advertiser_id": "5626771", "status": "application_pending", "click_base": null}
+    }
+  },
+  "products": [
+    {
+      "id": "ray-ban-wayfarer-rb2140",
+      "brand": "Ray-Ban",
+      "name": "Wayfarer",
+      "code": "RB2140",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "wayfarer", "gift"],
+      "summary": "Ray-Ban lists this colorway as the Original Wayfarer Classic, model RB2140, in a polished black frame with G-15 green lenses. The page title gives the size as 50-22.",
+      "size_line": "The linked colorway is titled 50-22 (lens width 50 mm, bridge 22 mm). Other Wayfarer sizes, if Ray-Ban still sells them, are separate colorways.",
+      "lens_line": "This colorway is G-15 green. Ray-Ban also sells polarized Wayfarer colorways under the same model code; this page does not price those.",
+      "polarized_line": "The linked RB2140 colorway is the classic G-15, not a polarized lens. Polarized Wayfarers are a different colorway on Ray-Ban's site.",
+      "offers": [
+        {
+          "label": "Polished black, G-15 green, 50-22",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB2140%20UNISEX%20original%20wayfarer%20classic-black/805289126577",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB2140",
+          "image": "https://images2.ray-ban.com//prod-onecp-record-files/pieyewear/aa3935f3-184a-4e17-a880-b35d00c65c8a/0RB2140__901__P21__shad__qt.png?impolicy=RB_RB_FBShare",
+          "note": "The public product page opened on this date did not show a price in the page text we could read."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-new-wayfarer-rb2132",
+      "brand": "Ray-Ban",
+      "name": "New Wayfarer",
+      "code": "RB2132",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "wayfarer", "gift"],
+      "summary": "Ray-Ban lists this colorway as the New Wayfarer Classic, model RB2132, in polished tortoise with G-15 green lenses. The page title gives the size as 55-18.",
+      "size_line": "The linked colorway is titled 55-18. A New Wayfarer Flash colorway is titled 52-18, so this model is sold in more than one lens width.",
+      "lens_line": "This colorway is G-15 green. Flash and polarized colorways are separate RB2132 pages.",
+      "polarized_line": "The linked colorway is not titled as polarized. Ray-Ban sells other RB2132 colorways with polarized in the name.",
+      "offers": [
+        {
+          "label": "Polished tortoise, G-15 green, 55-18",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB2132new%20wayfarer%20classic-tortoise/805289052432",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB2132",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-aviator-rb3025",
+      "brand": "Ray-Ban",
+      "name": "Aviator Classic",
+      "code": "RB3025",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "teardrop",
+      "tags": ["classic", "aviator", "gift"],
+      "summary": "Ray-Ban lists the Aviator Classic as model RB3025. The linked colorway is polished Arista gold with G-15 green lenses, titled 58-14. A separate gunmetal page is titled as G-15 green polarized, also 58-14.",
+      "size_line": "The gold G-15 colorway is titled 58-14. Ray-Ban also titles a polarized gunmetal Aviator Classic at 62-14, so the model is sold in more than one lens width.",
+      "lens_line": "G-15 green on the gold colorway. Polarized G-15 is a different RB3025 page.",
+      "polarized_line": "The buy link is the non-polarized G-15 gold colorway. The gunmetal page is titled polarized. Neither page showed a price in the text we could read.",
+      "offers": [
+        {
+          "label": "Arista gold, G-15 green, 58-14",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB3025aviator%20classic-arista%20gold/805289602057",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB3025",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        },
+        {
+          "label": "Gunmetal, G-15 green polarized, 58-14",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB3025aviator%20classic-gunmetal/805289063230",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB3025",
+          "image": null,
+          "note": "Page title says polarized. No price was readable."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-clubmaster-rb3016",
+      "brand": "Ray-Ban",
+      "name": "Clubmaster",
+      "code": "RB3016",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "browline",
+      "tags": ["classic", "gift"],
+      "summary": "Ray-Ban lists this colorway as the Clubmaster Classic, model RB3016, polished black on gold with G-15 green lenses. The page title gives the size as 51-21.",
+      "size_line": "The linked colorway is titled 51-21.",
+      "lens_line": "G-15 green on this colorway. Other Clubmaster lens colors are separate pages.",
+      "polarized_line": "This colorway is not titled as polarized.",
+      "offers": [
+        {
+          "label": "Black on gold, G-15 green, 51-21",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB3016clubmaster%20classic-black%20on%20gold/805289304449",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB3016",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-round-metal-rb3447",
+      "brand": "Ray-Ban",
+      "name": "Round Metal",
+      "code": "RB3447",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "round",
+      "tags": ["classic", "polarized", "gift"],
+      "summary": "Ray-Ban lists this colorway as Round Metal Polarized, model RB3447, polished gold frame with black polarized lenses. The page title gives the size as 50-21.",
+      "size_line": "The linked colorway is titled 50-21.",
+      "lens_line": "Black polarized lenses, from the page title.",
+      "polarized_line": "Yes. The Ray-Ban page title for this colorway says Polarized.",
+      "offers": [
+        {
+          "label": "Polished gold, black polarized, 50-21",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB3447round%20metal-gold/8056597365093",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB3447",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-erika-rb4171",
+      "brand": "Ray-Ban",
+      "name": "Erika",
+      "code": "RB4171",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "round",
+      "tags": ["classic", "gift"],
+      "summary": "Ray-Ban lists this colorway as Erika Classic, model RB4171, matte rubber Havana frame with brown lenses. The page title says UNISEX and gives the size as 54-18.",
+      "size_line": "The linked colorway is titled 54-18.",
+      "lens_line": "Brown lenses on this colorway. Other Erika pages use gradient grey and G-15 green.",
+      "polarized_line": "This colorway is not titled as polarized.",
+      "offers": [
+        {
+          "label": "Matte rubber Havana, brown, 54-18",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB4171%20UNISEX%20erika%20classic-havana/805289742470",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB4171",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-justin-rb4165",
+      "brand": "Ray-Ban",
+      "name": "Justin",
+      "code": "RB4165",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic"],
+      "summary": "Ray-Ban lists this colorway as Justin Color Mix, model RB4165, matte rubber black with a blue mirror lens. The page title says UNISEX and gives the size as 54-16.",
+      "size_line": "The linked colorway is titled 54-16.",
+      "lens_line": "Blue mirror on this colorway.",
+      "polarized_line": "This colorway is not titled as polarized.",
+      "offers": [
+        {
+          "label": "Matte rubber black, blue mirror, 54-16",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB4165%20UNISEX%20justin%20color%20mix-rubber%20black/8053672416183",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB4165",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "ray-ban-hexagonal-rb3548",
+      "brand": "Ray-Ban",
+      "name": "Hexagonal",
+      "code": "RB3548",
+      "merchant": "ray-ban",
+      "audience": "unisex",
+      "shape": "hex",
+      "tags": ["classic", "gift"],
+      "summary": "Ray-Ban lists this colorway as Hexagonal, model RB3548, in gold with G-15 green lenses. The page title says UNISEX. It does not print a lens-bridge size in the title we read.",
+      "size_line": "The G-15 gold page title does not state a lens width. A different RB3548 page (clear blue-light lenses) is coded 51-21; that size is not assumed for this sunglass colorway.",
+      "lens_line": "G-15 green on the linked colorway.",
+      "polarized_line": "This colorway is not titled as polarized.",
+      "offers": [
+        {
+          "label": "Gold, G-15 green",
+          "url": "https://www.ray-ban.com/usa/sunglasses/RB3548%20UNISEX%20hexagonal-gold/8056597209663",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RB3548",
+          "image": null,
+          "note": "No price was readable on the public page text we opened."
+        }
+      ]
+    },
+    {
+      "id": "oakley-holbrook",
+      "brand": "Oakley",
+      "name": "Holbrook",
+      "code": "OO9102",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "sport", "gift"],
+      "summary": "Oakley describes Holbrook as a square O Matter frame with metal rivets, a 6-base lens, and Prizm lens options. The matte black / Prizm Grey colorway and the matte black / Prizm Black Polarized colorway are both OO9102, size XL (140 mm).",
+      "size_line": "Oakley lists both linked colorways as XL (140 mm), regular high-bridge fit.",
+      "lens_line": "Prizm Grey (17% light transmission, category 3, polycarbonate) on the $174 colorway. Prizm Black Polarized (11% light transmission) on the $237 colorway. Oakley says polarized and Iridium options are available.",
+      "polarized_line": "The $174 colorway is Prizm Grey and is not labeled polarized. The $237 colorway is labeled Prizm Black Polarized.",
+      "offers": [
+        {
+          "label": "Matte black, Prizm Grey",
+          "url": "https://www.oakley.com/en-us/product/W0OO9102",
+          "polarized": false,
+          "price": 174.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9102",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/1f72ef2f-ec05-4ccc-b594-b35f0080ecab/0OO9102__9102E8__P21__shad__qt.png",
+          "note": "Oakley showed $174.00 on this colorway."
+        },
+        {
+          "label": "Matte black, Prizm Black Polarized",
+          "url": "https://www.oakley.com/en-us/product/W0OO9102?variant=888392260109",
+          "polarized": true,
+          "price": 237.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9102",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/8d3b8cfc-a3e7-411a-814f-b35e0188d286/0OO9102__9102D6__P21__shad__qt.png",
+          "note": "Oakley showed $237.00 on this polarized colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-frogskins",
+      "brand": "Oakley",
+      "name": "Frogskins",
+      "code": "OO9013",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Oakley describes Frogskins as the square lifestyle frame brought back from the original 1980s tooling. The linked colorway is polished black with Prizm Black lenses, size XL (137 mm), 4-base lens geometry.",
+      "size_line": "Oakley lists this colorway as XL (137 mm).",
+      "lens_line": "Prizm Black, 11% light transmission, category 3, polycarbonate. Oakley says polarized and Iridium options are available on the model.",
+      "polarized_line": "The $160 colorway is Prizm Black and is not labeled polarized. A polarized Frogskins colorway was not priced on this check.",
+      "offers": [
+        {
+          "label": "Polished black, Prizm Black",
+          "url": "https://www.oakley.com/en-us/product/W0OO9013",
+          "polarized": false,
+          "price": 160.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9013",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/5755a2da-e1de-415e-a42d-b35f0057a232/0OO9013__9013C4__P21__shad__qt.png",
+          "note": "Oakley showed $160.00 on this colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-sutro",
+      "brand": "Oakley",
+      "name": "Sutro",
+      "code": "OO9406",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "shield",
+      "tags": ["sport"],
+      "summary": "Oakley describes Sutro as a high-wrap sport shield inspired by urban cycling, in lightweight O Matter with Unobtainium nosepads and Prizm lenses. The linked colorway is polished black with Prizm Sapphire, and Oakley showed $203.00.",
+      "size_line": "Oakley lists the fit as wide, high-bridge. The page does not print a millimeter frame width in the size line we read.",
+      "lens_line": "Prizm Sapphire, 12% light transmission, category 3, grey base, polycarbonate.",
+      "polarized_line": "This colorway is not labeled polarized. Oakley's sun-lens copy on the page says polarized lenses are part of the wider lens range.",
+      "offers": [
+        {
+          "label": "Polished black, Prizm Sapphire",
+          "url": "https://www.oakley.com/en-us/product/W0OO9406",
+          "polarized": false,
+          "price": 203.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9406",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/34ad4760-a813-4142-96af-b3610056ecd8/0OO9406__940690__P21__shad__qt.png",
+          "note": "Oakley showed $203.00 and marked the colorway Most Wanted."
+        }
+      ]
+    },
+    {
+      "id": "oakley-sutro-lite-s",
+      "brand": "Oakley",
+      "name": "Sutro Lite S",
+      "code": "OO9496",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "shield",
+      "tags": ["sport"],
+      "summary": "Oakley describes Sutro Lite S as a smaller semi-rimless Sutro Lite, size M (130 mm), for a smaller face. The linked colorway is matte black with Prizm Black lenses. This file does not store a price for it.",
+      "size_line": "The product page titles this colorway Sutro Lite S and the extracted size line says M (130 mm).",
+      "lens_line": "Prizm Black on the linked colorway.",
+      "polarized_line": "This colorway is not labeled polarized in the title.",
+      "offers": [
+        {
+          "label": "Matte black, Prizm Black",
+          "url": "https://www.oakley.com/en-us/product/W0OO9496",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9496",
+          "image": null,
+          "note": "Price left blank. The number in a search extract was not stored, because this row was not given the same direct page read as the priced Oakley colorways."
+        }
+      ]
+    },
+    {
+      "id": "oakley-radar-ev-path",
+      "brand": "Oakley",
+      "name": "Radar EV Path",
+      "code": "OO9208",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "shield",
+      "tags": ["sport"],
+      "summary": "Oakley describes Radar EV Path as the taller-lens Radar for a wider upper view, in O Matter with Unobtainium earsocks and nosepads. The linked colorway is polished black with Prizm Black lenses, size XL (138 mm). Oakley showed $244.00.",
+      "size_line": "Oakley lists this colorway as XL (138 mm), regular high-bridge fit.",
+      "lens_line": "Prizm Black, 11% light transmission, category 3. Oakley says polarized and Iridium options are available, and a hard case is included.",
+      "polarized_line": "The $244 colorway is Prizm Black and is not labeled polarized.",
+      "offers": [
+        {
+          "label": "Polished black, Prizm Black",
+          "url": "https://www.oakley.com/en-us/product/W0OO9208",
+          "polarized": false,
+          "price": 244.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9208",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/38bb5876-a40c-4880-9348-b35f004b5e7c/0OO9208__920852__P21__shad__qt.png",
+          "note": "Oakley showed $244.00 on this colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-flak-2-xl",
+      "brand": "Oakley",
+      "name": "Flak 2.0 XL",
+      "code": "OO9188",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["sport"],
+      "summary": "Oakley describes Flak 2.0 XL as a sport frame with a taller lens and 8.75-base geometry, O Matter, Unobtainium earsocks and nosepads. The linked colorway is matte black with Prizm Black lenses. Oakley showed $214.00. The fit line says narrow, high-bridge.",
+      "size_line": "The fit line on this colorway says narrow, high-bridge. Oakley calls it the XL edition.",
+      "lens_line": "Prizm Black, 11% light transmission, category 3, polycarbonate. Polarized and Iridium options are listed as available. A soft vault is included.",
+      "polarized_line": "The $214 colorway is Prizm Black and is not labeled polarized.",
+      "offers": [
+        {
+          "label": "Matte black, Prizm Black",
+          "url": "https://www.oakley.com/en-us/product/W0OO9188",
+          "polarized": false,
+          "price": 214.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9188",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/d5f483ce-afd6-4844-ba82-b35f004c727e/0OO9188__918873__P21__shad__qt.png",
+          "note": "Oakley showed $214.00 on this colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-gascan",
+      "brand": "Oakley",
+      "name": "Gascan",
+      "code": "OO9014",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["classic", "sport"],
+      "summary": "Oakley calls Gascan its first high-wrap lifestyle shape, with straight lines and a toric lens, in O Matter. The linked colorway is matte grey ink with Prizm Sapphire, size S (127 mm). Oakley showed $112.00 and labeled the colorway Last Chance.",
+      "size_line": "Oakley lists this colorway as S (127 mm), regular high-bridge fit.",
+      "lens_line": "Prizm Sapphire, 12% light transmission, category 3. Oakley says polarized and Iridium options are available. The page says this product is excluded from promo codes.",
+      "polarized_line": "The $112 colorway is Prizm Sapphire and is not labeled polarized.",
+      "offers": [
+        {
+          "label": "Matte grey ink, Prizm Sapphire",
+          "url": "https://www.oakley.com/en-us/product/W0OO9014",
+          "polarized": false,
+          "price": 112.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9014",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/6613e9b9-6e3f-4b8d-9337-b3a1013bad18/0OO9014__9014D3__P21__shad__qt.png",
+          "note": "Oakley showed $112.00 and the label Last Chance."
+        }
+      ]
+    },
+    {
+      "id": "oakley-jawbreaker",
+      "brand": "Oakley",
+      "name": "Jawbreaker",
+      "code": "OO9290",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "shield",
+      "tags": ["sport"],
+      "summary": "Oakley describes Jawbreaker as a cycling shield with Switchlock lens changes and temples that adjust to three lengths. The linked colorway is matte black with Prizm Road lenses, size L (136 mm). Oakley showed $268.00.",
+      "size_line": "Oakley lists this colorway as L (136 mm), wide high-bridge fit.",
+      "lens_line": "Prizm Road, 20% light transmission, medium light, rose base, category 3. A soft vault is included. Polarized and Iridium options are listed as available.",
+      "polarized_line": "The $268 colorway is Prizm Road and is not labeled polarized.",
+      "offers": [
+        {
+          "label": "Matte black, Prizm Road",
+          "url": "https://www.oakley.com/en-us/product/W0OO9290",
+          "polarized": false,
+          "price": 268.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9290",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/641fe7b2-3742-492f-8693-b35e01503e8b/0OO9290__929020__P21__shad__qt.png",
+          "note": "Oakley showed $268.00 on this colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-half-jacket-2",
+      "brand": "Oakley",
+      "name": "Half Jacket 2.0",
+      "code": "OO9144",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["sport"],
+      "summary": "Oakley describes Half Jacket 2.0 as a sport frame with interchangeable lenses and 8.75-base geometry. The linked colorway is polished black with Black Iridium lenses. Oakley showed $71.00 and the line \"Unavailable online, shop similar.\"",
+      "size_line": "Oakley lists the size as L on this colorway.",
+      "lens_line": "Black Iridium, 11% light transmission, category 3, polycarbonate. The page says this product is excluded from promo codes.",
+      "polarized_line": "This colorway is Black Iridium, not labeled polarized. The Half Jacket 2.0 XL page is a different model code and does have a polarized colorway.",
+      "offers": [
+        {
+          "label": "Polished black, Black Iridium",
+          "url": "https://www.oakley.com/en-us/product/W0OO9144",
+          "polarized": false,
+          "price": 71.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9144",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/040e38ba-e814-4d8b-980b-b35d012946c5/0OO9144__914401__STD__shad__qt.png",
+          "note": "Oakley showed $71.00 and said unavailable online.",
+          "availability_note": "Unavailable online"
+        }
+      ]
+    },
+    {
+      "id": "oakley-half-jacket-2-xl",
+      "brand": "Oakley",
+      "name": "Half Jacket 2.0 XL",
+      "code": "OO9154",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["sport", "polarized", "fishing"],
+      "summary": "Oakley describes Half Jacket 2.0 XL as the interchangeable-lens sport frame in a size M (130 mm). The linked colorway is matte black with Prizm Deep Water Polarized lenses. Oakley showed $225.00.",
+      "size_line": "Oakley lists this colorway as M (130 mm), narrow high-bridge fit.",
+      "lens_line": "Prizm Deep Water Polarized, 12% light transmission, bright light, rose base, category 3.",
+      "polarized_line": "Yes. The lens name on this colorway is Prizm Deep Water Polarized.",
+      "offers": [
+        {
+          "label": "Matte black, Prizm Deep Water Polarized",
+          "url": "https://www.oakley.com/en-us/product/W0OO9154",
+          "polarized": true,
+          "price": 225.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9154",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/c8ea2ebc-d000-43ad-bb58-b360010347eb/0OO9154__915467__P21__shad__qt.png",
+          "note": "Oakley showed $225.00 on this polarized colorway."
+        }
+      ]
+    },
+    {
+      "id": "oakley-latch",
+      "brand": "Oakley",
+      "name": "Latch",
+      "code": "OO9265",
+      "merchant": "oakley",
+      "audience": "unisex",
+      "shape": "round",
+      "tags": ["classic"],
+      "summary": "Oakley describes Latch as a rounded frame with a keyhole bridge and a clip hinge that latches onto a shirt. The linked colorway is matte brown tortoise with Prizm Black lenses, size L (134 mm). Oakley showed $196.00.",
+      "size_line": "Oakley lists this colorway as L (134 mm), regular high-bridge fit.",
+      "lens_line": "Prizm Black, 11% light transmission, category 3. Oakley says polarized and Iridium options are available. The frame shape on this colorway is listed as round.",
+      "polarized_line": "The $196 colorway is Prizm Black and is not labeled polarized.",
+      "offers": [
+        {
+          "label": "Matte brown tortoise, Prizm Black",
+          "url": "https://www.oakley.com/en-us/product/W0OO9265",
+          "polarized": false,
+          "price": 196.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "OO9265",
+          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/7e9d84f2-167c-43d7-b5c2-b35f0045bb21/0OO9265__926522__P21__shad__qt.png",
+          "note": "Oakley showed $196.00 on this colorway."
+        }
+      ]
+    },
+    {
+      "id": "costa-fantail",
+      "brand": "Costa Del Mar",
+      "name": "Fantail",
+      "code": "TF 01",
+      "merchant": "costa",
+      "audience": "men",
+      "shape": "rectangle",
+      "tags": ["fishing", "polarized", "sport"],
+      "summary": "Costa describes Fantail as the smaller kin of the Blackfin, a co-molded fishing frame. The linked colorway is size M, Blackout frame, blue mirror polarized glass, item TF 01 OBMGLP. Costa says it sells only polarized sunglasses.",
+      "size_line": "Size M. Costa's chart for this colorway: frame width 131 mm, bridge 14 mm, lens width 59.2 mm, lens height 38.8 mm, temple 127 mm.",
+      "lens_line": "Blue mirror polarized glass (580G), 10% light transmission, lens category 3P, 8-base decentered. Grey polycarbonate is offered as another material on the same page.",
+      "polarized_line": "Yes. Costa states that it sells only polarized sunglasses, and this colorway is titled polarized glass.",
+      "offers": [
+        {
+          "label": "Blackout, blue mirror polarized glass, size M",
+          "url": "https://www.costadelmar.com/en-us/sunglasses/6S9006-97963498111",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "TF 01 OBMGLP",
+          "image": null,
+          "note": "The Costa product page we opened did not show a price in the text."
+        }
+      ]
+    },
+    {
+      "id": "costa-reefton",
+      "brand": "Costa Del Mar",
+      "name": "Reefton",
+      "code": "RFT 01",
+      "merchant": "costa",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["fishing", "polarized", "sport"],
+      "summary": "Costa describes Reefton as a large freshwater-fishing frame with co-molded temples, Hydrolite pads, and cam-action spring hinges. The linked colorway is XL, Blackout, blue mirror polarized glass, item RFT 01 OBMGLP.",
+      "size_line": "Size XL. Costa's chart: frame width 137.8 mm, bridge 15 mm, lens width 63.5 mm, lens height 43.1 mm, temple 115 mm.",
+      "lens_line": "Blue mirror polarized glass, grey base, 10% light transmission, category 3P. The page also offers polarized polycarbonate.",
+      "polarized_line": "Yes. The colorway is titled polarized glass, and Costa says every Costa sunglass is polarized.",
+      "offers": [
+        {
+          "label": "Blackout, blue mirror polarized glass, size XL",
+          "url": "https://www.costadelmar.com/en-us/sunglasses/6S9007-97963555739",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "RFT 01 OBMGLP",
+          "image": null,
+          "note": "The Costa product page we opened did not show a price in the text."
+        }
+      ]
+    },
+    {
+      "id": "costa-jose",
+      "brand": "Costa Del Mar",
+      "name": "Jose",
+      "code": "JO 01",
+      "merchant": "costa",
+      "audience": "men",
+      "shape": "rectangle",
+      "tags": ["fishing", "polarized", "sport", "gift"],
+      "summary": "Costa names Jose for angler Jose Wejebe and describes it as a men's sport-fishing frame. The linked colorway is size L, Blackout, blue mirror polarized glass, item JO 01 OBMGLP.",
+      "size_line": "Size L. Costa's chart: frame width 135 mm, bridge 16 mm, lens width 61.8 mm, lens height 38 mm, temple 130 mm.",
+      "lens_line": "Blue mirror polarized glass, 8-base decentered, category 3P.",
+      "polarized_line": "Yes. The colorway is titled polarized glass.",
+      "offers": [
+        {
+          "label": "Blackout, blue mirror polarized glass, size L",
+          "url": "https://www.costadelmar.com/en-us/sunglasses/6S9023-97963525480",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "JO 01 OBMGLP",
+          "image": null,
+          "note": "The Costa product page we opened did not show a price in the text."
+        }
+      ]
+    },
+    {
+      "id": "costa-jose-pro",
+      "brand": "Costa Del Mar",
+      "name": "Jose PRO",
+      "code": "6S9106",
+      "merchant": "costa",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["fishing", "polarized", "sport"],
+      "summary": "Costa describes Jose PRO as the Jose frame with six PRO Series additions for sweat, fog, and retention. The linked colorway is size L, midnight blue, blue mirror polarized glass.",
+      "size_line": "Size L. Costa's chart: frame width 134 mm, bridge 16 mm, lens width 62 mm, lens height 40.7 mm, temple 128 mm.",
+      "lens_line": "Blue mirror polarized glass, 10% light transmission, category 3P, 8-base decentered.",
+      "polarized_line": "Yes. The colorway is titled polarized glass.",
+      "offers": [
+        {
+          "label": "Midnight blue, blue mirror polarized glass, size L",
+          "url": "https://www.costadelmar.com/en-us/sunglasses/6S9106-97963939683",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "6S9106",
+          "image": null,
+          "note": "The Costa product page we opened did not show a price in the text."
+        }
+      ]
+    },
+    {
+      "id": "costa-tuna-alley-pro",
+      "brand": "Costa Del Mar",
+      "name": "Tuna Alley PRO",
+      "code": "6S9105",
+      "merchant": "costa",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["fishing", "polarized", "sport"],
+      "summary": "Costa describes Tuna Alley PRO as the Tuna Alley frame with venting, sweat channels, Hydrolite rubber, adjustable nose pads, hooding, side shields, and keeper slots. The linked colorway is size L, matte black, gray silver mirror polarized glass.",
+      "size_line": "Size L. Costa's chart: frame width 136 mm, bridge 16 mm, lens width 60.3 mm, lens height 42.3 mm, temple 123 mm. Nose pads are adjustable.",
+      "lens_line": "Gray silver mirror polarized glass, category 3P, 8-base decentered.",
+      "polarized_line": "Yes. The colorway is titled polarized glass.",
+      "offers": [
+        {
+          "label": "Matte black, gray silver mirror polarized glass, size L",
+          "url": "https://www.costadelmar.com/en-us/sunglasses/6S9105-97963910804",
+          "polarized": true,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "6S9105",
+          "image": null,
+          "note": "The Costa product page we opened did not show a price in the text."
+        }
+      ]
+    },
+    {
+      "id": "maui-jim-peahi",
+      "brand": "Maui Jim",
+      "name": "Peahi",
+      "code": "MJ000321",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["polarized", "gift"],
+      "summary": "Sunglass Hut lists Maui Jim Peahi as an XXL frame, 65-19, in black with grey lenses, and marks the colorway Polarized. Sunglass Hut showed $289.00. Maui Jim is not a separate CJ merchant on this site, so the link is the Sunglass Hut product page.",
+      "size_line": "Sunglass Hut titles this colorway XXL (65-19).",
+      "lens_line": "Grey lenses. The page says Polarized. Other Peahi colorways on Sunglass Hut use blue or copper lenses.",
+      "polarized_line": "Yes. Sunglass Hut labels this colorway Polarized.",
+      "offers": [
+        {
+          "label": "Black, grey polarized, 65-19",
+          "url": "https://www.sunglasshut.com/us/maui-jim/mj000321-603429012595",
+          "polarized": true,
+          "price": 289.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "MJ000321",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/52b41f64-e4e7-42a5-abdc-b360017c093d/0MJ000321__1190_030A.png",
+          "note": "Sunglass Hut showed $289.00."
+        }
+      ]
+    },
+    {
+      "id": "maui-jim-red-sands",
+      "brand": "Maui Jim",
+      "name": "Red Sands",
+      "code": "MJ000452",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "rectangle",
+      "tags": ["polarized", "gift"],
+      "summary": "Sunglass Hut lists Maui Jim Red Sands as a size L frame, 59-17, tortoise with copper lenses, and marks the colorway Polarized. Sunglass Hut showed $259.00.",
+      "size_line": "Sunglass Hut titles this colorway L (59-17).",
+      "lens_line": "Copper lenses. The page says Polarized.",
+      "polarized_line": "Yes. Sunglass Hut labels this colorway Polarized.",
+      "offers": [
+        {
+          "label": "Tortoise, copper polarized, 59-17",
+          "url": "https://www.sunglasshut.com/us/maui-jim/mj000452-603429032661",
+          "polarized": true,
+          "price": 259.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "MJ000452",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/1e095ac0-3ae1-415f-a214-b35e005340f1/0MJ000452__4400C4_030A.png",
+          "note": "Sunglass Hut showed $259.00."
+        }
+      ]
+    },
+    {
+      "id": "persol-714",
+      "brand": "Persol",
+      "name": "714",
+      "code": "PO0714",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "teardrop",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists the Persol 714 Original in a size L, 54-21, tortoise frame with green lenses. Sunglass Hut showed $452.00 and said the colorway is online only, with other color variants on the page.",
+      "size_line": "The linked colorway is titled L (54-21). Sunglass Hut also lists an M (52-21) 714; that size was not priced in this file.",
+      "lens_line": "Green lenses on this tortoise colorway.",
+      "polarized_line": "The page we opened does not label this colorway polarized.",
+      "offers": [
+        {
+          "label": "Tortoise, green, 54-21",
+          "url": "https://www.sunglasshut.com/us/persol/po0714-713132010778",
+          "polarized": false,
+          "price": 452.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PO0714",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/e40be520-2f47-4ab7-9b8c-b35d017aedcf/0PO0714__24_31__P21__shad__qt.png",
+          "note": "Sunglass Hut showed $452.00."
+        }
+      ]
+    },
+    {
+      "id": "persol-649",
+      "brand": "Persol",
+      "name": "649",
+      "code": "PO0649",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists the Persol 649 Original in a size L, 56-20, blue frame with grey lenses. Sunglass Hut showed $363.00.",
+      "size_line": "The linked colorway is titled L (56-20).",
+      "lens_line": "Grey lenses on this blue frame.",
+      "polarized_line": "The page we opened does not label this colorway polarized.",
+      "offers": [
+        {
+          "label": "Blue, grey, 56-20",
+          "url": "https://www.sunglasshut.com/us/persol/po0649-8056262571125",
+          "polarized": false,
+          "price": 363.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PO0649",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/484c4a15-06ef-4b6b-a5db-b3a0017d8da1/0PO0649__1234R5__P21__shad__qt.png",
+          "note": "Sunglass Hut showed $363.00."
+        }
+      ]
+    },
+    {
+      "id": "prada-pr-17ws",
+      "brand": "Prada",
+      "name": "PR 17WS",
+      "code": "PR 17WS",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists Prada PR 17WS in a size S, 49-20, white frame with brown lenses. Sunglass Hut showed $548.00 and lists many other color variants on the model.",
+      "size_line": "The linked colorway is titled S (49-20).",
+      "lens_line": "Brown lenses on this white frame.",
+      "polarized_line": "The page we opened does not label this colorway polarized.",
+      "offers": [
+        {
+          "label": "White, brown, 49-20",
+          "url": "https://www.sunglasshut.com/us/prada/pr-17ws-8056262511442",
+          "polarized": false,
+          "price": 548.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PR 17WS",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/1519881b-2a1e-4bf6-ad4a-b3a1007215ff/0PR_17WS__21D5J2__P21__shad__qt.png",
+          "note": "Sunglass Hut showed $548.00."
+        }
+      ]
+    },
+    {
+      "id": "prada-pr-19zs",
+      "brand": "Prada",
+      "name": "PR 19ZS",
+      "code": "PR 19ZS",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists Prada PR 19ZS in a size M, 55-17, black frame with grey lenses, and marks the model a best seller on the page title area. The price is left blank here because this row was not given the same direct page read as PR 17WS.",
+      "size_line": "The page title says M (55-17).",
+      "lens_line": "Grey lenses and a black frame, from the page title.",
+      "polarized_line": "The title we read does not say polarized.",
+      "offers": [
+        {
+          "label": "Black, grey, 55-17",
+          "url": "https://www.sunglasshut.com/us/prada/pr-19zs-8056597744225",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PR 19ZS",
+          "image": null,
+          "note": "Open the Sunglass Hut page for today's price."
+        }
+      ]
+    },
+    {
+      "id": "prada-pr-06ys",
+      "brand": "Prada",
+      "name": "PR 06YS",
+      "code": "PR 06YS",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists Prada PR 06YS in a size M, 53-21, black frame with grey lenses. The page title calls it a best seller and online only. The price is left blank here.",
+      "size_line": "The page title says M (53-21).",
+      "lens_line": "Grey lenses and a black frame, from the page title.",
+      "polarized_line": "The title we read does not say polarized.",
+      "offers": [
+        {
+          "label": "Black, grey, 53-21",
+          "url": "https://www.sunglasshut.com/us/prada/pr-06ys-8056597517058",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PR 06YS",
+          "image": null,
+          "note": "Open the Sunglass Hut page for today's price."
+        }
+      ]
+    },
+    {
+      "id": "prada-pr-65zs",
+      "brand": "Prada",
+      "name": "PR 65ZS",
+      "code": "PR 65ZS",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists Prada PR 65ZS in a size L, 55-20, gold frame with grey lenses. The page title calls it a best seller. The price is left blank here.",
+      "size_line": "The page title says L (55-20).",
+      "lens_line": "Grey lenses and a gold frame, from the page title.",
+      "polarized_line": "The title we read does not say polarized.",
+      "offers": [
+        {
+          "label": "Gold, grey, 55-20",
+          "url": "https://www.sunglasshut.com/us/prada/pr-65zs-8056597877329",
+          "polarized": false,
+          "price": null,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "PR 65ZS",
+          "image": null,
+          "note": "Open the Sunglass Hut page for today's price."
+        }
+      ]
+    },
+    {
+      "id": "gucci-gg1494s",
+      "brand": "Gucci",
+      "name": "GG1494S",
+      "code": "GG1494S",
+      "merchant": "sunglass-hut",
+      "audience": "unisex",
+      "shape": "square",
+      "tags": ["classic", "gift"],
+      "summary": "Sunglass Hut lists Gucci GG1494S in a size M, 57-17, tortoise frame with blue lenses. Sunglass Hut showed $530.00.",
+      "size_line": "The linked colorway is titled M (57-17).",
+      "lens_line": "Blue lenses on this tortoise frame.",
+      "polarized_line": "The page we opened does not label this colorway polarized.",
+      "offers": [
+        {
+          "label": "Tortoise, blue, 57-17",
+          "url": "https://www.sunglasshut.com/us/gucci/gc002214-889652470764",
+          "polarized": false,
+          "price": 530.00,
+          "currency": "USD",
+          "price_checked": "2026-11-15",
+          "sku": "GG1494S",
+          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/cee14af5-7d15-4aff-92bb-b3630057355d/0GC002214__4402B1_030A.png",
+          "note": "Sunglass Hut showed $530.00."
+        }
+      ]
+    }
+  ],
+  "guides": [
+    {
+      "type": "category",
+      "slug": "polarized",
+      "path": "polarized",
+      "title": "Polarized sunglasses",
+      "h1": "Polarized sunglasses",
+      "filter": "polarized",
+      "intro": "These are the colorways whose merchant page titles the lens as polarized, plus every Costa frame, because Costa says it sells only polarized sunglasses. A model can also offer a non-polarized colorway at a different price. Where we did not read a price, the button says check today's price."
+    },
+    {
+      "type": "category",
+      "slug": "fishing",
+      "path": "fishing",
+      "title": "Fishing sunglasses",
+      "h1": "Fishing sunglasses",
+      "filter": "fishing",
+      "intro": "Costa writes these frames for the water, and every Costa lens on these pages is polarized. Oakley Half Jacket 2.0 XL is here because the colorway we priced is named Prizm Deep Water Polarized. Del Mar is a Costa name we did not match to a single product URL on November 15, 2026, so it is not a deal page and it has no price here. Search it on Costa's own site."
+    },
+    {
+      "type": "category",
+      "slug": "sport",
+      "path": "sport",
+      "title": "Sport sunglasses",
+      "h1": "Sport sunglasses",
+      "filter": "sport",
+      "intro": "Shields and sport frames from the Oakley and Costa product pages we opened. Prices appear only for the colorway whose page showed a number."
+    },
+    {
+      "type": "category",
+      "slug": "aviator",
+      "path": "aviator",
+      "title": "Aviator sunglasses",
+      "h1": "Aviator sunglasses",
+      "filter": "aviator",
+      "intro": "Teardrop frames. Ray-Ban Aviator Classic RB3025 is the model people search by name. Persol 714 is the acetate pilot Sunglass Hut sells beside it."
+    },
+    {
+      "type": "category",
+      "slug": "wayfarer",
+      "path": "wayfarer",
+      "title": "Wayfarer sunglasses",
+      "h1": "Wayfarer sunglasses",
+      "filter": "wayfarer",
+      "intro": "Ray-Ban Wayfarer RB2140 and New Wayfarer RB2132 are different model codes. The colorways linked here are 50-22 and 55-18. Neither product page showed a price in the text we read."
+    },
+    {
+      "type": "category",
+      "slug": "men",
+      "path": "men",
+      "title": "Sunglasses for men",
+      "h1": "Sunglasses for men",
+      "audience": "men",
+      "intro": "Costa calls Fantail and Jose men's fishing frames. The other frames on this page are sold as unisex, which is how most of these models are titled. This is a shopping list, not a ranked review."
+    },
+    {
+      "type": "category",
+      "slug": "women",
+      "path": "women",
+      "title": "Sunglasses for women",
+      "h1": "Sunglasses for women",
+      "audience": "women",
+      "intro": "Erika, the Prada frames, and the other unisex icons are the models shoppers compare. Ray-Ban titles Erika as unisex. Nothing on this page is a scored ranking."
+    },
+    {
+      "type": "best",
+      "slug": "polarized-sunglasses-under-200",
+      "path": "best/polarized-sunglasses-under-200",
+      "title": "Best polarized sunglasses under $200",
+      "h1": "Polarized sunglasses under $200",
+      "intro": "On November 15, 2026, every polarized colorway whose price we could read was over $200. Oakley Half Jacket 2.0 XL Prizm Deep Water Polarized was $225.00. Oakley Holbrook Prizm Black Polarized was $237.00. Maui Jim Red Sands was $259.00 and Peahi was $289.00 at Sunglass Hut. Costa's pages did not show a price, so those frames are not listed as under $200. Non-polarized colorways that did price under $200 are linked below and labeled as not polarized."
+    },
+    {
+      "type": "best",
+      "slug": "fishing-sunglasses",
+      "path": "best/fishing-sunglasses",
+      "title": "Best fishing sunglasses",
+      "h1": "Fishing sunglasses to compare",
+      "filter": "fishing",
+      "intro": "A short list of fishing frames from the Costa pages we opened, plus the Oakley colorway whose lens is named Prizm Deep Water Polarized. No stars, no invented ranking. Open the merchant page for today's price when this site does not show one."
+    },
+    {
+      "type": "best",
+      "slug": "sunglasses-for-men",
+      "path": "best/sunglasses-for-men",
+      "title": "Best sunglasses for men",
+      "h1": "Sunglasses men shop by name",
+      "ids": ["ray-ban-wayfarer-rb2140", "ray-ban-aviator-rb3025", "ray-ban-clubmaster-rb3016", "oakley-holbrook", "oakley-gascan", "costa-fantail", "costa-jose", "persol-714", "maui-jim-peahi"],
+      "intro": "Named models men search for. Fantail and Jose are the two Costa frames whose pages call them men's. The Ray-Ban, Oakley, Persol, and Maui Jim frames here are unisex titles. Prices are only the colorways we read."
+    },
+    {
+      "type": "best",
+      "slug": "sunglasses-for-women",
+      "path": "best/sunglasses-for-women",
+      "title": "Best sunglasses for women",
+      "h1": "Sunglasses women shop by name",
+      "ids": ["ray-ban-erika-rb4171", "ray-ban-wayfarer-rb2140", "ray-ban-round-metal-rb3447", "ray-ban-hexagonal-rb3548", "oakley-frogskins", "prada-pr-17ws", "prada-pr-19zs", "gucci-gg1494s", "maui-jim-red-sands", "persol-649"],
+      "intro": "Erika, Round Metal, Hexagonal, Frogskins, Prada, Gucci, Red Sands, and 649 are the frames in this catalog people compare for a smaller or fashion-leaning fit. Ray-Ban titles Erika as unisex. This page does not rank them."
+    },
+    {
+      "type": "vs",
+      "slug": "ray-ban-vs-oakley",
+      "path": "vs/ray-ban-vs-oakley",
+      "title": "Ray-Ban vs Oakley",
+      "h1": "Ray-Ban vs Oakley",
+      "a": "ray-ban-wayfarer-rb2140",
+      "b": "oakley-holbrook",
+      "intro": "Ray-Ban and Oakley are different companies and different shapes. This page puts the Wayfarer RB2140 colorway next to the Holbrook colorways we priced, because those are the two models people use as the stand-in for each brand. It is not a score.",
+      "points": [
+        "Wayfarer RB2140, polished black, G-15, 50-22: the Ray-Ban page we opened did not show a price.",
+        "Holbrook OO9102, matte black, Prizm Grey: Oakley showed $174.00. The Prizm Black Polarized colorway of the same model showed $237.00.",
+        "Wayfarer on this page is a G-15 lens. Holbrook's priced everyday colorway is Prizm Grey, and polarized is a separate Holbrook colorway.",
+        "Both links go to the brand's own US site. CJ applications for Ray-Ban (3175074) and Oakley (1463156) are still pending, so the buttons are plain URLs."
+      ]
+    },
+    {
+      "type": "vs",
+      "slug": "wayfarer-vs-new-wayfarer",
+      "path": "vs/wayfarer-vs-new-wayfarer",
+      "title": "Wayfarer vs New Wayfarer",
+      "h1": "Wayfarer vs New Wayfarer",
+      "a": "ray-ban-wayfarer-rb2140",
+      "b": "ray-ban-new-wayfarer-rb2132",
+      "intro": "These are two Ray-Ban model codes, not two sizes of one frame. The colorways linked here are the ones whose pages we opened.",
+      "points": [
+        "Wayfarer is RB2140. The linked colorway is polished black, G-15 green, titled 50-22.",
+        "New Wayfarer is RB2132. The linked colorway is polished tortoise, G-15 green, titled 55-18.",
+        "A New Wayfarer Flash page is titled 52-18, so RB2132 is sold in more than one lens width. Do not treat 55 mm as the only New Wayfarer size.",
+        "Neither product page showed a price in the text we could read on November 15, 2026."
+      ]
+    },
+    {
+      "type": "vs",
+      "slug": "holbrook-vs-frogskins",
+      "path": "vs/holbrook-vs-frogskins",
+      "title": "Holbrook vs Frogskins",
+      "h1": "Holbrook vs Frogskins",
+      "a": "oakley-holbrook",
+      "b": "oakley-frogskins",
+      "intro": "Both are square Oakley lifestyle frames in O Matter. The prices below are the colorways Oakley showed on November 15, 2026, not a sale we invented.",
+      "points": [
+        "Holbrook OO9102, matte black, Prizm Grey, XL 140 mm, 6-base lens: $174.00. Prizm Black Polarized on the same model: $237.00.",
+        "Frogskins OO9013, polished black, Prizm Black, XL 137 mm, 4-base lens: $160.00. That colorway is not labeled polarized.",
+        "Oakley says both models offer polarized and Iridium lenses. Only the Holbrook polarized colorway had a price we read.",
+        "Holbrook's page mentions metal rivets. Frogskins' page describes the frame as the 1980s tooling brought back."
+      ]
+    },
+    {
+      "type": "gift",
+      "slug": "fathers-day-sunglasses",
+      "path": "gifts/fathers-day-sunglasses",
+      "title": "Father's Day sunglasses gifts",
+      "h1": "Father's Day sunglasses gifts",
+      "ids": ["ray-ban-wayfarer-rb2140", "ray-ban-aviator-rb3025", "ray-ban-clubmaster-rb3016", "oakley-holbrook", "oakley-gascan", "costa-jose", "persol-649", "maui-jim-peahi"],
+      "intro": "Frames people buy for a father, picked by model name. Costa calls Jose a men's fishing frame. The others are unisex titles. There is no review score on this page. If a price is missing, the merchant page did not show one when we checked."
+    },
+    {
+      "type": "gift",
+      "slug": "christmas-sunglasses",
+      "path": "gifts/christmas-sunglasses",
+      "title": "Christmas sunglasses gifts",
+      "h1": "Christmas sunglasses gifts",
+      "ids": ["ray-ban-wayfarer-rb2140", "ray-ban-aviator-rb3025", "ray-ban-round-metal-rb3447", "oakley-frogskins", "oakley-holbrook", "persol-714", "prada-pr-17ws", "gucci-gg1494s", "maui-jim-red-sands", "costa-fantail"],
+      "intro": "A Christmas short list of named models: Wayfarer, Aviator, Round Metal, Frogskins, Holbrook, Persol 714, Prada PR 17WS, Gucci GG1494S, Maui Jim Red Sands, and Costa Fantail. Prices are the November 15, 2026 reads. The rest say check today's price."
+    }
+  ]
+}
