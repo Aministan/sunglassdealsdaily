@@ -35,30 +35,24 @@ python3 scripts/apply_feed.py data/cj-feed.json
 
 ## Build
 
-GitHub Pages project URL (the default):
+The default build is the custom domain, with no path prefix:
 
 ```bash
 python3 scripts/build.py
 python3 scripts/validate.py
 ```
 
-Custom domain later, still without a CNAME file in the repo until you add one on purpose:
+`SITE_URL` defaults to `https://sunglassdealsdaily.com` and `PATH_PREFIX` defaults to empty. Canonicals, the sitemap, robots, Open Graph URLs, and internal links use that host.
 
-```bash
-SITE_URL=https://sunglassdealsdaily.com PATH_PREFIX= python3 scripts/build.py
-```
-
-Local preview of the project-page paths:
+Local preview:
 
 ```bash
 python3 scripts/build.py
-rm -rf /tmp/www && mkdir -p /tmp/www
-cp -a site /tmp/www/sunglassdealsdaily
-python3 -m http.server -d /tmp/www 8765
+python3 -m http.server -d site 8765
 ```
 
-Then open `http://127.0.0.1:8765/sunglassdealsdaily/`.
+Then open `http://127.0.0.1:8765/`.
 
 ## Deploy
 
-`.github/workflows/pages.yml` builds `site/` and deploys with GitHub Actions. `actions/configure-pages` runs with `enablement: true`, and the build uses that action's `origin` and `base_path`, so a custom domain set in the Pages settings is picked up without a code change. The workflow does not write a CNAME file.
+`.github/workflows/pages.yml` builds `site/` with `SITE_URL=https://sunglassdealsdaily.com` and an empty `PATH_PREFIX`, then deploys with GitHub Actions. The custom domain is set in the repository's Pages settings. The workflow does not write a CNAME file.

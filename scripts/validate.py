@@ -92,21 +92,33 @@ for path in html_files:
                     walk(value)
         walk(node)
 
-prefix = "/sunglassdealsdaily"
+prefix = os.environ.get("PATH_PREFIX", "").rstrip("/")
+expected_host = os.environ.get("SITE_URL", "https://sunglassdealsdaily.com").rstrip("/")
 missing_links = []
 for path in html_files:
     text = open(path, encoding="utf-8").read()
+    rel = os.path.relpath(path, OUT)
+    if "aministan.github.io" in text or "/sunglassdealsdaily/" in text:
+        fail(f"{rel}: still points at the github.io project path")
     for href in href_re.findall(text):
-        if not href.startswith(prefix + "/") and href != prefix:
+        if href.startswith(("http://", "https://", "mailto:", "#")):
             continue
-        if href.endswith((".xml", ".txt", ".png", ".svg", ".json")):
-            target = os.path.join(OUT, href[len(prefix):].lstrip("/"))
+        if prefix:
+            if not href.startswith(prefix + "/") and href.rstrip("/") != prefix:
+                continue
+            rest = href[len(prefix):]
         else:
-            target = os.path.join(OUT, href[len(prefix):].strip("/"), "index.html")
-            if href.rstrip("/") == prefix:
+            if not href.startswith("/"):
+                continue
+            rest = href
+        if href.endswith((".xml", ".txt", ".png", ".svg", ".json")):
+            target = os.path.join(OUT, rest.lstrip("/"))
+        else:
+            target = os.path.join(OUT, rest.strip("/"), "index.html")
+            if rest.strip("/") == "":
                 target = os.path.join(OUT, "index.html")
         if not os.path.exists(target):
-            missing_links.append(f"{os.path.relpath(path, OUT)} -> {href}")
+            missing_links.append(f"{rel} -> {href}")
 if missing_links:
     fail("broken internal links:\n" + "\n".join(missing_links[:30]))
 
@@ -114,9 +126,14 @@ if os.path.exists(os.path.join(OUT, "CNAME")):
     fail("CNAME should not be written yet")
 
 robots = open(os.path.join(OUT, "robots.txt"), encoding="utf-8").read()
-if "Sitemap:" not in robots:
-    fail("robots missing sitemap")
+if f"Sitemap: {expected_host}/sitemap.xml" not in robots:
+    fail(f"robots sitemap is not {expected_host}/sitemap.xml")
+home = open(os.path.join(OUT, "index.html"), encoding="utf-8").read()
+if f'rel="canonical" href="{expected_host}/"' not in home:
+    fail(f"homepage canonical is not {expected_host}/")
 sitemap = open(os.path.join(OUT, "sitemap.xml"), encoding="utf-8").read()
+if expected_host not in sitemap:
+    fail("sitemap is not on the custom domain")
 if sitemap.count("<loc>") < 40:
     fail("sitemap looks short")
 if "404" in sitemap:

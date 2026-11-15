@@ -21,10 +21,10 @@ import links
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "site")
 DATA = json.load(open(os.path.join(ROOT, "data", "links.json"), encoding="utf-8"))
-BASE = os.environ.get("SITE_URL", "https://aministan.github.io").rstrip("/")
+BASE = os.environ.get("SITE_URL", "https://sunglassdealsdaily.com").rstrip("/")
 _parts = urllib.parse.urlsplit(BASE)
 BASE = urllib.parse.urlunsplit((_parts.scheme, _parts.netloc.lower(), _parts.path.rstrip("/"), "", ""))
-PREFIX = os.environ.get("PATH_PREFIX", "/sunglassdealsdaily").rstrip("/")
+PREFIX = os.environ.get("PATH_PREFIX", "").rstrip("/")
 NAME = DATA["site_name"]
 OWNER = DATA["owner"]
 UPDATED = datetime.date.fromisoformat(DATA["updated"])
@@ -768,7 +768,7 @@ def render_static():
 <p>{e(NAME)} is a static guide to famous sunglasses, written by {e(OWNER)}. It lists one page per model: Ray-Ban Wayfarer, Aviator, Clubmaster, Oakley Holbrook, Frogskins, Costa fishing frames, Maui Jim, Persol, Prada, and Gucci styles sold at Sunglass Hut.</p>
 <p>The price and the buy button sit above the photo, which is the layout that works on our fragrance sister site. A dollar amount is stored only after we read it on the merchant's public product page. This site does not invent prices, star ratings, or reviews.</p>
 <p>Commission Junction applications are pending for Ray-Ban US (advertiser 3175074), Oakley US (1463156), Sunglass Hut US (4025749), and Costa Del Mar (5626771). Until those are approved, every button is a plain link to the merchant. The product key in <code>data/links.json</code> is where a CJ deep link will be swapped in later. The sid on that future link is pagetype-slug-placement.</p>
-<p>The site is built to load at https://aministan.github.io/sunglassdealsdaily/ and can move to sunglassdealsdaily.com by changing SITE_URL and PATH_PREFIX. No CNAME file is in the repo yet.</p>
+<p>The public site is https://sunglassdealsdaily.com. Canonical URLs, the sitemap, and internal links use that host with no path prefix. The github.io address redirects here. The custom domain is set in GitHub Pages; this repo does not include a CNAME file.</p>
 """
     privacy = f"""
 <p class="crumbs"><a href="{PREFIX}/">Home</a> / Privacy</p>
