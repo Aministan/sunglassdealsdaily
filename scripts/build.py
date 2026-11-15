@@ -144,6 +144,10 @@ th,td{text-align:left;padding:8px;border-bottom:1px solid #eee;vertical-align:to
 .also{font-family:system-ui,sans-serif;font-size:14px;margin:8px 0}
 footer{max-width:1080px;margin:0 auto;padding:8px 16px 28px;color:#5c564c;font-size:13px;font-family:system-ui,sans-serif}
 .note{background:#fff8e8;border:1px solid #ead7a1;border-radius:12px;padding:10px 12px}
+header nav a.nav-bf{color:#e8a317;font-weight:800}
+.bf-banner{display:block;background:#14181f;color:#f4f1ea;border-radius:14px;padding:14px 16px;margin:0 0 16px;text-decoration:none;font-family:system-ui,sans-serif}
+.bf-banner strong{color:#e8a317;font-size:18px}
+.bf-banner span{display:block;margin-top:4px;color:#f4f1ea}
 @media(max-width:640px){
   h1{font-size:22px}
   nav{flex-wrap:nowrap;overflow-x:auto}
@@ -265,6 +269,7 @@ def page(path, title, desc, body, jsonld=None, index=True, image=None):
 <a class="logo" href="{PREFIX}/">Sunglass<span>Deals</span>Daily</a>
 <nav>
 <a href="{PREFIX}/">Deals</a>
+<a class="nav-bf" href="{PREFIX}/black-friday-sunglass-deals/">Black Friday</a>
 <a href="{PREFIX}/brands/">Brands</a>
 <a href="{PREFIX}/polarized/">Polarized</a>
 <a href="{PREFIX}/fishing/">Fishing</a>
@@ -916,6 +921,169 @@ def assert_catalog():
             links.wrap_cj(click, p["offers"][0]["url"], "deal-test-cta")
 
 
+def reference_price(offer):
+    """A higher stored price on the same offer. Never guessed."""
+    for key in ("compare_at", "was", "msrp"):
+        ref = offer.get(key)
+        if isinstance(ref, (int, float)) and not isinstance(ref, bool) and ref > 0:
+            return float(ref)
+    return None
+
+
+def savings_amount(offer):
+    if not priced(offer):
+        return None
+    ref = reference_price(offer)
+    if ref is None or ref <= float(offer["price"]):
+        return None
+    return ref - float(offer["price"])
+
+
+def render_black_friday():
+    """Black Friday list. Savings sort only when a compare-at is already stored."""
+    path = "black-friday-sunglass-deals"
+    slug = "sunglass-deals"
+    current = []
+    parked = []
+    for product in PRODUCTS:
+        for offer in product["offers"]:
+            if not priced(offer):
+                continue
+            note = (offer.get("availability_note") or "").lower()
+            row = (product, offer, savings_amount(offer))
+            if "unavailable" in note:
+                parked.append(row)
+            else:
+                current.append(row)
+    with_savings = [row for row in current if row[2] is not None]
+    if with_savings:
+        current.sort(key=lambda row: (-row[2], float(row[1]["price"]), row[0]["name"]))
+        order_note = "Sorted by dollars off the compare-at price already stored on that colorway."
+    else:
+        current.sort(key=lambda row: (float(row[1]["price"]), row[0]["brand"], row[0]["name"]))
+        order_note = (
+            "No colorway in the file has a compare-at, a previous price, or an MSRP, so there is no savings amount to sort. "
+            "The list is every stored price that was still for sale, lowest first."
+        )
+    rows_html = []
+    for product, offer, saved in current:
+        save_bit = f" <span class='meta'>Save {money(saved)}</span>" if saved is not None else ""
+        rows_html.append(
+            "<tr>"
+            f"<td><a href='{PREFIX}/sunglasses/{product['id']}/'>{e(display(product))}</a>"
+            f"<div class='meta'>{e(product['code'])}</div></td>"
+            f"<td>{e(offer['label'])}</td>"
+            f"<td><b>{money(offer['price'])}</b>{save_bit}</td>"
+            f"<td>{e(offer.get('price_checked') or UPDATED.isoformat())}</td>"
+            f"<td>{btn(product, offer, 'black-friday', slug, 'cta')}</td>"
+            "</tr>"
+        )
+    parked_html = ""
+    if parked:
+        bits = []
+        for product, offer, _saved in parked:
+            bits.append(
+                f"<li><a href='{PREFIX}/sunglasses/{product['id']}/'>{e(display(product))}</a> "
+                f"showed {money(offer['price'])}. The stored note says {e(offer.get('availability_note') or 'unavailable')}, "
+                "so it is not in the deal list.</li>"
+            )
+        parked_html = "<ul>" + "".join(bits) + "</ul>"
+    brands = []
+    seen = set()
+    for product in PRODUCTS:
+        if product["brand"] not in seen:
+            seen.add(product["brand"])
+            brands.append(product["brand"])
+    brand_html = []
+    for brand in brands:
+        items = []
+        for product in PRODUCTS:
+            if product["brand"] != brand:
+                continue
+            priced_bits = [money(o["price"]) for o in product["offers"] if priced(o)]
+            price_bit = ", ".join(priced_bits) if priced_bits else "Check today's price"
+            items.append(
+                f"<li><a href='{PREFIX}/sunglasses/{product['id']}/'>{e(display(product))} {e(product['code'])}</a> "
+                f"<span class='meta'>{e(price_bit)}</span></li>"
+            )
+        brand_html.append(
+            f"<section class='box'><h2>{e(brand)}</h2><ul>{''.join(items)}</ul>"
+            f"<p><a href='{PREFIX}/brands/{brand_slug(brand)}/'>All {e(brand)} pages</a></p></section>"
+        )
+    crumb_html, crumb_ld = crumbs([
+        (f"{PREFIX}/", "Home"),
+        (None, "Black Friday 2026"),
+    ])
+    faqs = [
+        (
+            "When is Black Friday 2026?",
+            "Friday, November 27, 2026. Cyber Monday is Monday, November 30, 2026.",
+        ),
+        (
+            "Are these Black Friday prices?",
+            "No. Each number is a price already stored from that colorway's merchant page, checked November 15, 2026. It is not a forecast of the November 27 price.",
+        ),
+        (
+            "Which pair has the biggest savings?",
+            "None of the stored offers includes a compare-at price, a previous price, or an MSRP. This page does not calculate dollars saved or a percent off.",
+        ),
+        (
+            "What should I expect on Black Friday?",
+            "Retailers often change prices over that weekend, and a popular color can sell through. Open the model page and then the merchant page that day. This guide does not predict a discount.",
+        ),
+        (
+            "Do these buttons use affiliate tracking?",
+            "No. Ray-Ban, Oakley, Sunglass Hut, and Costa still have an empty click_base. Each button is the merchant's own product URL.",
+        ),
+    ]
+    faq_html, faq_ld = faq_block(faqs)
+    intro = (
+        "Black Friday 2026 is Friday, November 27. Cyber Monday is Monday, November 30. "
+        "The prices here are the ones already in the file. A model with no number still has a page, and that page sends you to the merchant to check today's price."
+    )
+    body = (
+        crumb_html
+        + "<h1>Black Friday sunglass deals 2026</h1>"
+        + f"<p class='sub'>{e(intro)}</p>"
+        + "<section class='box'><h2>Prices we can show</h2>"
+        + f"<p>{e(order_note)}</p>"
+        + "<table><thead><tr><th>Model</th><th>Colorway</th><th>Stored price</th><th>Checked</th><th></th></tr></thead>"
+        + f"<tbody>{''.join(rows_html)}</tbody></table>"
+        + parked_html
+        + "</section>"
+        + "<h2>Shop by brand</h2>"
+        + "".join(brand_html)
+        + "<section class='box'><h2>What to expect on Black Friday</h2>"
+        + "<p>Friday, November 27, 2026 is the day most sunglass retailers run their Black Friday event. The Monday after, November 30, is Cyber Monday. Prices often move across those days, and a color that is easy to find now can be gone by the weekend.</p>"
+        + "<p>Treat the numbers above as the last price we stored, not as the price you will see on November 27. The same model is sold in more than one lens. A polarized colorway is a different row from a non-polarized one, and only a row with a stored price shows a number.</p>"
+        + "<p>Start with the brand section, open the model page, and use the button there. The button goes to the store's own product page. This site does not add a tracking link while the merchant's click base is empty.</p>"
+        + "</section>"
+        + faq_html
+    )
+    title = "Black Friday sunglass deals (Nov 27, 2026)"
+    desc = (
+        "Black Friday 2026 is Friday, November 27, and Cyber Monday is November 30. "
+        "Sunglass prices already stored from merchant pages, grouped by brand. No predicted percent off."
+    )
+    items = []
+    for i, (product, offer, _saved) in enumerate(current, start=1):
+        items.append({
+            "@type": "ListItem",
+            "position": i,
+            "name": f"{display(product)} {offer['label']} {money(offer['price'])}",
+            "url": abs_url(f"sunglasses/{product['id']}"),
+        })
+    item_list = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Stored sunglass prices ahead of Black Friday 2026",
+        "url": abs_url(path),
+        "itemListElement": items,
+    }
+    page(path, title, desc, body, [crumb_ld, item_list, faq_ld])
+    print(f"black friday deals: {len(current)}")
+
+
 def main():
     if os.path.isdir(OUT):
         import shutil
@@ -946,6 +1114,8 @@ def main():
     chips = "".join(f'<a href="{PREFIX}/brands/{brand_slug(b)}/">{e(b)}</a>' for b in brands)
     guides = "".join(f'<a href="{PREFIX}/{g["path"]}/">{e(g["title"])}</a>' for g in GUIDES)
     home = (
+        f'<a class="bf-banner" href="{PREFIX}/black-friday-sunglass-deals/"><strong>Black Friday 2026 sunglass deals</strong>'
+        '<span>Friday, November 27. Cyber Monday is November 30. Prices below are the ones already stored.</span></a>'
         f"<h1>Sunglass deals for {UPDATED.strftime('%B %-d, %Y')}</h1>"
         "<p class='sub'>Each famous model has its own page. The price and the buy button sit above the photo. "
         "A price is printed only when that colorway's merchant page showed it. Otherwise the button says check today's price.</p>"
@@ -1018,6 +1188,7 @@ def main():
             {"@type": "ListItem", "position": 2, "name": "Gifts"},
         ]}],
     )
+    render_black_friday()
     render_static()
     write_robots_and_sitemap()
     # The "." path becomes site/index.html via the logic below? Check page().
