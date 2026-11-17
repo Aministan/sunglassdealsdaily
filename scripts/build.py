@@ -59,6 +59,38 @@ def lead(product):
     return min(rows, key=lambda o: float(o["price"]))
 
 
+def in_stock_prices(product):
+    return [
+        offer for offer in prices_of(product)
+        if "unavailable" not in (offer.get("availability_note") or "").lower()
+    ]
+
+
+def offer_rank(product):
+    """In-stock prices first, then any stored price, then frames with no price."""
+    live = in_stock_prices(product)
+    if live:
+        return (0, min(float(offer["price"]) for offer in live), product["name"].lower())
+    rows = prices_of(product)
+    if rows:
+        return (1, min(float(offer["price"]) for offer in rows), product["name"].lower())
+    return (2, 0, product["name"].lower())
+
+
+def last_price_check():
+    dates = []
+    for product in PRODUCTS:
+        for offer in product["offers"]:
+            raw = offer.get("price_checked")
+            if raw:
+                dates.append(datetime.date.fromisoformat(raw))
+    return max(dates) if dates else UPDATED
+
+
+def pretty_date(day):
+    return f"{day.strftime('%B')} {day.day}, {day.year}"
+
+
 def merchant(product):
     mid = product["merchant"]
     if mid not in MERCHANTS:
@@ -111,7 +143,7 @@ def btn(product, offer, page_type, page_slug, placement):
 
 CSS = """
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.5 "Iowan Old Style",Palatino,"Palatino Linotype",Georgia,serif;color:#1c1915;background:#f4f1ea}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1c1915;background:#f4f1ea}
 a{color:#0f4c5c}
 header{background:#14181f;color:#f4f1ea;padding:14px 16px}
 header a{color:#f4f1ea;text-decoration:none}
@@ -124,21 +156,24 @@ h1{font-size:28px;line-height:1.15;margin:8px 0}
 .lead-offer{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:14px;margin:0 0 12px;position:sticky;top:0;z-index:5;box-shadow:0 8px 24px rgba(20,24,31,.08)}
 .lead-offer .btn{margin-top:8px}
 .price{font-size:28px;font-weight:800;font-family:system-ui,sans-serif}
-.price-missing{font-size:22px}
+.price-missing{font-size:14px;font-weight:600;color:#6d675c}
 .meta{color:#6d675c;font-size:13px;font-family:system-ui,sans-serif}
 .btn{display:inline-block;background:#14181f;color:#fff;text-decoration:none;font-family:system-ui,sans-serif;font-weight:700;border-radius:10px;padding:12px 16px}
 .btn:hover{background:#0f4c5c}
 .shot{margin:8px 0 16px;background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:12px}
-.shot img{display:block;width:min(420px,100%);height:auto;object-fit:contain;background:#f3efe8;border-radius:10px;margin:0 auto}
+.shot img{display:block;width:min(420px,100%);height:auto;aspect-ratio:2/1;object-fit:contain;background:#fff;border-radius:10px;margin:0 auto}
 .shot svg{display:block;width:min(420px,100%);height:auto;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
 .card{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:12px;display:flex;flex-direction:column;font-family:system-ui,sans-serif;min-width:0}
 .card .nm{font-weight:700;margin:6px 0 2px}
 .card .btn{margin-top:auto;text-align:center}
-.card img{display:block;width:100%;max-width:100%;height:200px;object-fit:contain;object-position:center;background:#f3efe8;border-radius:10px;margin:0 0 8px}
-.card svg{width:100%;height:140px;object-fit:contain}
-td.thumb{width:88px}
-.row-thumb{width:72px;height:72px;object-fit:contain;background:#f3efe8;border-radius:8px;display:block}
+.card img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:2/1;object-fit:contain;object-position:center;background:#fff;border-radius:10px;margin:0 0 8px}
+.card svg{width:100%;height:auto;aspect-ratio:2/1;object-fit:contain}
+td.thumb{width:1%;padding:6px 8px;vertical-align:middle}
+.row-thumb{width:80px;height:auto;aspect-ratio:2/1;object-fit:contain;background:#fff;border-radius:6px;display:block}
+.table-scroll{overflow-x:auto}
+.scroll-hint{display:none;margin:0 0 8px;color:#6d675c;font-size:13px}
+.specs td::before{content:none}
 .box{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:14px 16px;margin:16px 0}
 table{width:100%;border-collapse:collapse;background:#fff}
 th,td{text-align:left;padding:8px;border-bottom:1px solid #eee;vertical-align:top;font-family:system-ui,sans-serif;font-size:14px}
@@ -157,13 +192,12 @@ header nav a.nav-bf{color:#e8a317;font-weight:800}
   nav{flex-wrap:nowrap;overflow-x:auto}
   .btn{display:block;text-align:center}
   .card{padding:10px}
-  .card img{height:148px}
-  td.thumb{width:auto;padding:8px 8px 0}
-  .row-thumb{width:72px;height:72px}
-  table,thead,tbody,tr,td{display:block}
-  thead{display:none}
-  td{border:0;padding:4px 8px}
-  tr{border-bottom:1px solid #eee;padding:8px 0}
+  .scroll-hint{display:block}
+  .specs thead{display:none}
+  .specs,.specs tbody,.specs tr,.specs td{display:block;width:100%}
+  .specs tr{border-bottom:1px solid #eee;padding:10px 0}
+  .specs td{border:0;padding:3px 0}
+  .specs td::before{content:attr(data-label);display:block;margin-bottom:1px;color:#6d675c;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 }
 """
 
@@ -354,7 +388,7 @@ def page(path, title, desc, body, jsonld=None, index=True, image=None):
 {body}
 </main>
 <footer>
-<p>We may earn a commission if you buy through our links, at no extra cost to you. CJ applications for Ray-Ban, Oakley, Sunglass Hut, and Costa Del Mar are pending, so buttons currently open the merchant's own page with no tracking parameters. <a href="{PREFIX}/disclosure/">Affiliate disclosure</a>.</p>
+<p>We may earn a commission if you buy through our links, at no extra cost to you. Buttons open the merchant's own product page. <a href="{PREFIX}/disclosure/">Affiliate disclosure</a>.</p>
 <p><a href="{PREFIX}/about/">About</a> · <a href="{PREFIX}/privacy/">Privacy</a> · <a href="{PREFIX}/llms.txt">llms.txt</a> · <a href="{PREFIX}/sitemap.xml">Sitemap</a></p>
 <p>© {UPDATED.year} {e(NAME)}. Written by {e(OWNER)}. Not affiliated with Ray-Ban, Oakley, Costa, Maui Jim, Persol, Prada, Gucci, or Sunglass Hut.</p>
 </footer>
@@ -410,7 +444,9 @@ def card(product, page_type, page_slug, offer=None):
 
 
 def also_line(product, page_type, page_slug):
-    same = [p for p in PRODUCTS if p["brand"] == product["brand"] and p["id"] != product["id"]][:5]
+    same = [p for p in PRODUCTS if p["brand"] == product["brand"] and p["id"] != product["id"]]
+    same.sort(key=offer_rank)
+    same = same[:5]
     if not same:
         return ""
     bits = []
@@ -431,7 +467,7 @@ def similar(product):
             continue
         if tags.intersection(other.get("tags") or []):
             rows.append(other)
-    rows.sort(key=lambda p: (0 if prices_of(p) else 1, p["brand"], p["name"]))
+    rows.sort(key=offer_rank)
     return rows[:4]
 
 
@@ -472,7 +508,7 @@ def deal_faqs(product):
         (f"What does {product['name']} cost?", price_answer(product)),
         (
             "Does the button use an affiliate tracking link?",
-            "No. The button is the merchant's own product URL. Commission Junction applications for Ray-Ban (3175074), Oakley (1463156), Sunglass Hut (4025749), and Costa Del Mar (5626771) are pending. When a program is approved, that merchant's click_base in data/links.json is filled in and the build adds a sid of the form pagetype-slug-placement. The plain product URL stays in the same file.",
+            "No. The button opens the merchant's own product page.",
         ),
     ]
 
@@ -532,17 +568,27 @@ def offer_table(product, page_type, page_slug):
     rows = []
     for offer in product["offers"]:
         pol = "Yes" if offer.get("polarized") is True else "No" if offer.get("polarized") is False else "Not stated"
-        price = money(offer["price"]) if priced(offer) else "Check today's price"
+        if priced(offer):
+            price = f"<b>{money(offer['price'])}</b>"
+        else:
+            price = '<span class="price-missing">Check today\'s price</span>'
         note = offer.get("availability_note") or offer.get("note") or ""
         link = ext_a(product, offer, e(merchant(product)["name"]), page_type, page_slug, "table")
+        cells = (
+            ("Store", link),
+            ("Colorway", e(offer["label"])),
+            ("Polarized", pol),
+            ("Price", price),
+            ("Checked", e(offer.get("price_checked") or "")),
+            ("Note", e(note)),
+        )
         rows.append(
             "<tr>"
-            f"<td>{link}</td><td>{e(offer['label'])}</td><td>{pol}</td>"
-            f"<td><b>{price}</b></td><td>{e(offer.get('price_checked') or '')}</td>"
-            f"<td>{e(note)}</td></tr>"
+            + "".join(f'<td data-label="{label}">{inner}</td>' for label, inner in cells)
+            + "</tr>"
         )
     return (
-        "<table><thead><tr><th>Store</th><th>Colorway</th><th>Polarized</th><th>Price</th><th>Checked</th><th>Note</th></tr></thead>"
+        '<table class="specs"><thead><tr><th>Store</th><th>Colorway</th><th>Polarized</th><th>Price</th><th>Checked</th><th>Note</th></tr></thead>'
         f"<tbody>{''.join(rows)}</tbody></table>"
     )
 
@@ -611,7 +657,7 @@ def render_deal(product):
         + figure
         + '<section class="box"><h2>Colorways</h2>'
         + offer_table(product, "deal", slug)
-        + f'<p>{e(product["lens_line"])}</p><p>{e(product["size_line"])}</p></section>'
+        + f'<p>{e(product["lens_line"])}</p></section>'
         + faq_html
         + sim_html
     )
@@ -655,6 +701,7 @@ def listing_ld(rows, name, page_url):
 
 
 def render_listing(path, title, h1, desc, intro, rows, crumb, page_type):
+    rows = sorted(rows, key=offer_rank)
     slug = path.strip("/").split("/")[-1]
     crumb_html, crumb_ld = crumbs(crumb)
     grid = "".join(card(p, page_type, slug) for p in rows) or "<p>No frames in this list.</p>"
@@ -793,7 +840,7 @@ def render_home():
     )
     first = priced_products[0]
     body = (
-        f"<h1>Sunglass deals for {UPDATED.strftime('%B %-d, %Y')}</h1>"
+        f"<h1>Prices checked {pretty_date(last_price_check())}</h1>"
         "<p class='sub'>Each model has its own page. The price and the buy button sit above the photo. "
         "A price is printed only when that colorway's merchant page showed it. Otherwise the button says check today's price.</p>"
         '<div class="lead-offer">'
@@ -886,18 +933,28 @@ def render_brands():
         if p["brand"] not in seen:
             seen.add(p["brand"])
             brands.append(p["brand"])
+
+    def brand_rank(brand):
+        rows = [p for p in PRODUCTS if p["brand"] == brand]
+        if any(in_stock_prices(p) for p in rows):
+            return (0, brand.lower())
+        if any(prices_of(p) for p in rows):
+            return (1, brand.lower())
+        return (2, brand.lower())
+
+    brands.sort(key=brand_rank)
     cards = []
     for brand in brands:
         rows = [p for p in PRODUCTS if p["brand"] == brand]
         priced_rows = [p for p in rows if prices_of(p)]
         if priced_rows:
             low = min(float(lead(p)["price"]) for p in priced_rows)
-            extra = f"From {money(low)}"
+            extra = f'<span class="price" style="font-size:18px">From {money(low)}</span>'
         else:
-            extra = "Check today's price"
+            extra = '<span class="price-missing">Check today\'s price</span>'
         cards.append(
             f'<a class="card" href="{PREFIX}/brands/{brand_slug(brand)}/"><span class="nm">{e(brand)}</span>'
-            f'<span class="meta">{len(rows)} models</span><span class="price" style="font-size:18px">{e(extra)}</span></a>'
+            f'<span class="meta">{len(rows)} models</span>{extra}</a>'
         )
     body = (
         f'<p class="crumbs"><a href="{PREFIX}/">Home</a> / Brands</p>'
@@ -913,7 +970,7 @@ def render_brands():
     page("brands", "Sunglass brands", desc, body, [crumb])
     for brand in brands:
         rows = [p for p in PRODUCTS if p["brand"] == brand]
-        rows.sort(key=lambda p: (0 if prices_of(p) else 1, float(lead(p)["price"]) if prices_of(p) else 0, p["name"]))
+        rows.sort(key=offer_rank)
         render_listing(
             f"brands/{brand_slug(brand)}",
             f"{brand} sunglasses",
@@ -1075,9 +1132,8 @@ def render_black_friday():
     brand_html = []
     for brand in brands:
         items = []
-        for product in PRODUCTS:
-            if product["brand"] != brand:
-                continue
+        brand_products = sorted((p for p in PRODUCTS if p["brand"] == brand), key=offer_rank)
+        for product in brand_products:
             priced_bits = [money(o["price"]) for o in product["offers"] if priced(o)]
             price_bit = ", ".join(priced_bits) if priced_bits else "Check today's price"
             items.append(
@@ -1111,7 +1167,7 @@ def render_black_friday():
         ),
         (
             "Do these buttons use affiliate tracking?",
-            "No. Ray-Ban, Oakley, Sunglass Hut, and Costa still have an empty click_base. Each button is the merchant's own product URL.",
+            "No. Each button opens the merchant's own product page.",
         ),
     ]
     faq_html, faq_ld = faq_block(faqs)
@@ -1125,15 +1181,15 @@ def render_black_friday():
         + f"<p class='sub'>{e(intro)}</p>"
         + "<section class='box'><h2>Prices we can show</h2>"
         + f"<p>{e(order_note)}</p>"
-        + "<table><thead><tr><th></th><th>Model</th><th>Colorway</th><th>Stored price</th><th>Checked</th><th></th></tr></thead>"
-        + f"<tbody>{''.join(rows_html)}</tbody></table>"
+        + "<p class='scroll-hint'>Swipe sideways to see every column.</p>"
+        + "<div class='table-scroll'><table><thead><tr><th></th><th>Model</th><th>Colorway</th><th>Stored price</th><th>Checked</th><th></th></tr></thead>"
+        + f"<tbody>{''.join(rows_html)}</tbody></table></div>"
         + "</section>"
         + "<h2>Deal cards</h2>"
         + "<p class='sub'>The same colorways as the table. The photo is the one from that merchant product page, and it sits at the top of the card.</p>"
         + "<div class='grid' id='deal-cards'>"
         + "".join(card(product, "black-friday", slug, offer) for product, offer, _saved in current)
         + "</div>"
-        + parked_html
         + "<h2>Shop by brand</h2>"
         + "".join(brand_html)
         + "<section class='box'><h2>What to expect on Black Friday</h2>"
@@ -1141,6 +1197,7 @@ def render_black_friday():
         + "<p>Treat the numbers above as the last price we stored, not as the price you will see on November 27. The same model is sold in more than one lens. A polarized colorway is a different row from a non-polarized one, and only a row with a stored price shows a number.</p>"
         + "<p>Start with the brand section, open the model page, and use the button there. The button goes to the store's own product page. This site does not add a tracking link while the merchant's click base is empty.</p>"
         + "</section>"
+        + parked_html
         + faq_html
     )
     title = "Black Friday sunglass deals (Nov 27, 2026)"
@@ -1186,7 +1243,7 @@ def main():
             heroes.append((float(offer["price"]), product, offer))
     heroes.sort(key=lambda row: row[0])
     _, first, first_offer = heroes[0]
-    priced_products = sorted((p for p in PRODUCTS if prices_of(p)), key=lambda p: float(lead(p)["price"]))
+    priced_products = sorted((p for p in PRODUCTS if prices_of(p)), key=offer_rank)
     blanks = [p for p in PRODUCTS if not prices_of(p)]
     brands = []
     seen = set()
@@ -1194,12 +1251,22 @@ def main():
         if p["brand"] not in seen:
             seen.add(p["brand"])
             brands.append(p["brand"])
+
+    def brand_rank(brand):
+        rows = [p for p in PRODUCTS if p["brand"] == brand]
+        if any(in_stock_prices(p) for p in rows):
+            return (0, brand.lower())
+        if any(prices_of(p) for p in rows):
+            return (1, brand.lower())
+        return (2, brand.lower())
+
+    brands.sort(key=brand_rank)
     chips = "".join(f'<a href="{PREFIX}/brands/{brand_slug(b)}/">{e(b)}</a>' for b in brands)
     guides = "".join(f'<a href="{PREFIX}/{g["path"]}/">{e(g["title"])}</a>' for g in GUIDES)
     home = (
         f'<a class="bf-banner" href="{PREFIX}/black-friday-sunglass-deals/"><strong>Black Friday 2026 sunglass deals</strong>'
         '<span>Friday, November 27. Cyber Monday is November 30. Prices below are the ones already stored.</span></a>'
-        f"<h1>Sunglass deals for {UPDATED.strftime('%B %-d, %Y')}</h1>"
+        f"<h1>Prices checked {pretty_date(last_price_check())}</h1>"
         "<p class='sub'>Each famous model has its own page. The price and the buy button sit above the photo. "
         "A price is printed only when that colorway's merchant page showed it. Otherwise the button says check today's price.</p>"
         '<div class="lead-offer">'
@@ -1260,12 +1327,21 @@ def main():
     gift_links = "".join(
         f'<p><a href="{PREFIX}/{g["path"]}/">{e(g["title"])}</a></p>' for g in gift_rows
     )
+    gift_picks = [
+        product for product in PRODUCTS
+        if "gift" in (product.get("tags") or []) and in_stock_prices(product)
+    ]
+    gift_picks.sort(key=offer_rank)
+    gift_grid = "".join(card(product, "gifts", "index") for product in gift_picks)
     page(
         "gifts",
         "Sunglasses gifts",
         "Father's Day and Christmas sunglass gift pages. Prices only when a merchant page showed them.",
         f'<p class="crumbs"><a href="{PREFIX}/">Home</a> / Gifts</p><h1>Sunglasses gifts</h1>'
-        f"<p class='sub'>Gift pages for named models. A missing price means we did not read one on the merchant page.</p>{gift_links}",
+        f"<p class='sub'>These picks already have a price from the merchant page. "
+        f"Prices checked {pretty_date(last_price_check())}.</p>"
+        f"<div class='grid'>{gift_grid}</div>"
+        f"<section class='box'><h2>Gift guides</h2>{gift_links}</section>",
         [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": abs_url("")},
             {"@type": "ListItem", "position": 2, "name": "Gifts"},
