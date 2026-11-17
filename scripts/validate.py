@@ -37,6 +37,7 @@ if not html_files:
 
 money_re = re.compile(r"\$(\d{1,4}\.\d{2})")
 href_re = re.compile(r'href="([^"]+)"')
+img_re = re.compile(r'<img\b[^>]*\bsrc="([^"]+)"')
 ld_re = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 sid_re = re.compile(r'data-sid="([^"]*)"')
 h3_re = re.compile(r"<h3>(.*?)</h3>", re.S)
@@ -53,6 +54,12 @@ for path in html_files:
     for href in href_re.findall(text):
         if links.is_tracking_url(href) or links.is_blocked_url(href):
             fail(f"{rel}: bad href {href}")
+    for src in img_re.findall(text):
+        if links.is_tracking_url(src) or links.is_blocked_url(src):
+            fail(f"{rel}: bad image {src}")
+        if src.startswith("/media/products/"):
+            if not os.path.isfile(os.path.join(OUT, src.lstrip("/"))):
+                fail(f"{rel}: missing hosted image {src}")
         if href.startswith("http") and "sid=" in href:
             fail(f"{rel}: sid on a live URL before CJ approval {href}")
     for sid in sid_re.findall(text):

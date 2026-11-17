@@ -129,12 +129,16 @@ h1{font-size:28px;line-height:1.15;margin:8px 0}
 .btn{display:inline-block;background:#14181f;color:#fff;text-decoration:none;font-family:system-ui,sans-serif;font-weight:700;border-radius:10px;padding:12px 16px}
 .btn:hover{background:#0f4c5c}
 .shot{margin:8px 0 16px;background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:12px}
-.shot img,.shot svg{display:block;width:min(420px,100%);height:auto;margin:0 auto}
+.shot img{display:block;width:min(420px,100%);height:auto;object-fit:contain;background:#f3efe8;border-radius:10px;margin:0 auto}
+.shot svg{display:block;width:min(420px,100%);height:auto;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
-.card{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:12px;display:flex;flex-direction:column;font-family:system-ui,sans-serif}
+.card{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:12px;display:flex;flex-direction:column;font-family:system-ui,sans-serif;min-width:0}
 .card .nm{font-weight:700;margin:6px 0 2px}
 .card .btn{margin-top:auto;text-align:center}
-.card img,.card svg{width:100%;height:140px;object-fit:contain}
+.card img{display:block;width:100%;max-width:100%;height:200px;object-fit:contain;object-position:center;background:#f3efe8;border-radius:10px;margin:0 0 8px}
+.card svg{width:100%;height:140px;object-fit:contain}
+td.thumb{width:88px}
+.row-thumb{width:72px;height:72px;object-fit:contain;background:#f3efe8;border-radius:8px;display:block}
 .box{background:#fff;border:1px solid #e4dccb;border-radius:14px;padding:14px 16px;margin:16px 0}
 table{width:100%;border-collapse:collapse;background:#fff}
 th,td{text-align:left;padding:8px;border-bottom:1px solid #eee;vertical-align:top;font-family:system-ui,sans-serif;font-size:14px}
@@ -152,6 +156,10 @@ header nav a.nav-bf{color:#e8a317;font-weight:800}
   h1{font-size:22px}
   nav{flex-wrap:nowrap;overflow-x:auto}
   .btn{display:block;text-align:center}
+  .card{padding:10px}
+  .card img{height:148px}
+  td.thumb{width:auto;padding:8px 8px 0}
+  .row-thumb{width:72px;height:72px}
   table,thead,tbody,tr,td{display:block}
   thead{display:none}
   td{border:0;padding:4px 8px}
@@ -194,16 +202,79 @@ def shape_svg(shape):
     return f'<svg {common} xmlns="http://www.w3.org/2000/svg">{body}</svg>'
 
 
-def thumb(product):
-    image = None
-    for offer in product["offers"]:
-        if offer.get("image"):
-            image = offer["image"]
+def jpeg_size(path):
+    """Width and height from a JPEG SOF marker. The site build does not import Pillow."""
+    with open(path, "rb") as handle:
+        data = handle.read()
+    if len(data) < 4 or data[:2] != b"\xff\xd8":
+        die(f"{path} is not a jpeg")
+    i = 2
+    while i + 9 < len(data):
+        if data[i] != 0xFF:
+            i += 1
+            continue
+        marker = data[i + 1]
+        if marker in (0xD8, 0xD9) or 0xD0 <= marker <= 0xD7 or marker == 0x01:
+            if marker == 0xD9:
+                break
+            i += 2
+            continue
+        if i + 4 > len(data):
             break
-    if image:
-        alt = e(f"{display(product)} product photo")
-        return f'<img src="{e(image)}" alt="{alt}" width="420" height="280" loading="lazy">'
-    return shape_svg(product.get("shape") or "square")
+        if marker in (0xC0, 0xC1, 0xC2):
+            height = int.from_bytes(data[i + 5:i + 7], "big")
+            width = int.from_bytes(data[i + 7:i + 9], "big")
+            if width > 0 and height > 0:
+                return width, height
+            break
+        length = int.from_bytes(data[i + 2:i + 4], "big")
+        if length < 2:
+            break
+        i += 2 + length
+    die(f"{path}: no jpeg size")
+
+
+def local_photo(offer):
+    """Hosted file saved from the merchant product page. A remote URL is never emitted."""
+    image = (offer or {}).get("image") or ""
+    if not isinstance(image, str) or not image.startswith("/media/products/") or not image.endswith(".jpg"):
+        return None
+    filename = os.path.basename(image)
+    if filename != image.rsplit("/", 1)[-1] or ".." in filename:
+        return None
+    disk = os.path.join(ROOT, "media", "products", filename)
+    if not os.path.isfile(disk):
+        return None
+    width, height = jpeg_size(disk)
+    href = f"{PREFIX}/media/products/{filename}" if PREFIX else f"/media/products/{filename}"
+    return href, width, height
+
+
+def img_tag(product, offer, kind="card"):
+    hosted = local_photo(offer)
+    if not hosted:
+        return ""
+    src, width, height = hosted
+    alt = display(product)
+    if kind == "thumb":
+        return (
+            f'<img class="row-thumb" loading="lazy" decoding="async" src="{e(src)}" '
+            f'alt="{e(alt)}" width="{width}" height="{height}">'
+        )
+    return (
+        f'<img loading="lazy" decoding="async" src="{e(src)}" alt="{e(alt)}" '
+        f'width="{width}" height="{height}">'
+    )
+
+
+def absolute_photo(offer):
+    hosted = local_photo(offer)
+    if not hosted:
+        return None
+    src = hosted[0]
+    if src.startswith("http://") or src.startswith("https://"):
+        return src
+    return f"{BASE}{src}"
 
 
 PAGES = []
@@ -318,8 +389,8 @@ def crumbs(items):
     return visible, data
 
 
-def card(product, page_type, page_slug):
-    offer = lead(product)
+def card(product, page_type, page_slug, offer=None):
+    offer = offer or lead(product)
     if priced(offer):
         price = f'<p class="price">{money(offer["price"])}</p>'
     else:
@@ -328,8 +399,9 @@ def card(product, page_type, page_slug):
     if offer.get("availability_note"):
         extra = f'<p class="meta">{e(offer["availability_note"])}</p>'
     meta = e(offer["label"])
+    photo = img_tag(product, offer)
     return (
-        f'<article class="card">{thumb(product)}'
+        f'<article class="card">{photo}'
         f'<p class="meta">{e(product["brand"])}</p>'
         f'<p class="nm"><a href="{PREFIX}/sunglasses/{product["id"]}/">{e(display(product))}</a></p>'
         f'<p class="meta">{e(product["code"])}</p>{price}<p class="meta">{meta}</p>{extra}'
@@ -447,7 +519,7 @@ def product_node(product, page_url):
         "description": product["summary"],
         "url": page_url,
     }
-    image = next((o["image"] for o in product["offers"] if o.get("image")), None)
+    image = absolute_photo(lead(product))
     if image:
         node["image"] = image
     offers = offer_nodes(product)
@@ -510,17 +582,15 @@ def render_deal(product):
     else:
         price_html = '<p class="lead-price"><span class="price price-missing">Check today\'s price</span></p>'
         status = "No verified price for this colorway. The button opens the merchant page."
-    photo = product["offers"][0].get("image")
-    if photo:
+    hosted = local_photo(offer)
+    if hosted:
+        src, width, height = hosted
         figure = (
-            f'<figure class="shot"><img src="{e(photo)}" alt="{e(name + " " + offer["label"])}" width="640" height="420">'
+            f'<figure class="shot"><img src="{e(src)}" alt="{e(name)}" width="{width}" height="{height}">'
             f'<figcaption class="meta">Photo from {e(merchant(product)["name"])} for {e(offer["label"])}.</figcaption></figure>'
         )
     else:
-        figure = (
-            f'<figure class="shot">{shape_svg(product.get("shape") or "square")}'
-            '<figcaption class="meta">A shape sketch, not a product photo. The merchant page has the photo.</figcaption></figure>'
-        )
+        figure = '<p class="meta">No photo from the merchant product page is stored for this colorway.</p>'
     faq_html, faq_ld = faq_block(deal_faqs(product))
     sims = similar(product)
     sim_html = ""
@@ -545,14 +615,13 @@ def render_deal(product):
         + faq_html
         + sim_html
     )
-    image = photo or None
     page(
         f"sunglasses/{slug}",
         title,
         desc,
         body,
         [crumb_ld, product_node(product, abs_url(f"sunglasses/{slug}")), faq_ld],
-        image=image if image and image.startswith("http") else None,
+        image=absolute_photo(offer),
     )
 
 
@@ -893,6 +962,14 @@ def write_robots_and_sitemap():
     json.dump(DATA, open(os.path.join(OUT, "links.json"), "w", encoding="utf-8"), indent=2)
     os.makedirs(os.path.join(OUT, "media"), exist_ok=True)
     write_png(os.path.join(OUT, "media", "og.png"))
+    src_dir = os.path.join(ROOT, "media", "products")
+    dest_dir = os.path.join(OUT, "media", "products")
+    if os.path.isdir(src_dir):
+        import shutil
+        os.makedirs(dest_dir, exist_ok=True)
+        for name in os.listdir(src_dir):
+            if name.endswith(".jpg"):
+                shutil.copyfile(os.path.join(src_dir, name), os.path.join(dest_dir, name))
     fav = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#14181f"/><rect x="4" y="14" width="10" height="8" rx="2" fill="none" stroke="#e8a317" stroke-width="2"/><rect x="18" y="14" width="10" height="8" rx="2" fill="none" stroke="#e8a317" stroke-width="2"/></svg>'
     open(os.path.join(OUT, "media", "favicon.svg"), "w", encoding="utf-8").write(fav)
 
@@ -970,6 +1047,7 @@ def render_black_friday():
         save_bit = f" <span class='meta'>Save {money(saved)}</span>" if saved is not None else ""
         rows_html.append(
             "<tr>"
+            f"<td class='thumb'>{img_tag(product, offer, kind='thumb')}</td>"
             f"<td><a href='{PREFIX}/sunglasses/{product['id']}/'>{e(display(product))}</a>"
             f"<div class='meta'>{e(product['code'])}</div></td>"
             f"<td>{e(offer['label'])}</td>"
@@ -1047,10 +1125,15 @@ def render_black_friday():
         + f"<p class='sub'>{e(intro)}</p>"
         + "<section class='box'><h2>Prices we can show</h2>"
         + f"<p>{e(order_note)}</p>"
-        + "<table><thead><tr><th>Model</th><th>Colorway</th><th>Stored price</th><th>Checked</th><th></th></tr></thead>"
+        + "<table><thead><tr><th></th><th>Model</th><th>Colorway</th><th>Stored price</th><th>Checked</th><th></th></tr></thead>"
         + f"<tbody>{''.join(rows_html)}</tbody></table>"
-        + parked_html
         + "</section>"
+        + "<h2>Deal cards</h2>"
+        + "<p class='sub'>The same colorways as the table. The photo is the one from that merchant product page, and it sits at the top of the card.</p>"
+        + "<div class='grid' id='deal-cards'>"
+        + "".join(card(product, "black-friday", slug, offer) for product, offer, _saved in current)
+        + "</div>"
+        + parked_html
         + "<h2>Shop by brand</h2>"
         + "".join(brand_html)
         + "<section class='box'><h2>What to expect on Black Friday</h2>"
@@ -1191,8 +1274,55 @@ def main():
     render_black_friday()
     render_static()
     write_robots_and_sitemap()
+    audit_photos()
     # The "." path becomes site/index.html via the logic below? Check page().
     print(f"{len(PRODUCTS)} models, {len(PAGES)} indexable URLs -> {OUT}")
+
+
+def audit_photos():
+    """Deal cards lead with the photo. A price table that precedes those cards shows the same file as a thumbnail."""
+    img_re = re.compile(r"<img\b[^>]*>", re.I)
+    bf = open(os.path.join(OUT, "black-friday-sunglass-deals", "index.html"), encoding="utf-8").read()
+    cards = re.findall(r'<article class="card">(.*?)</article>', bf, re.S)
+    if len(cards) < 16:
+        die(f"black friday cards {len(cards)} is under the priced deal count")
+    pictured = 0
+    for chunk in cards:
+        imgs = img_re.findall(chunk)
+        brand_at = chunk.find('class="meta"')
+        if imgs:
+            pictured += 1
+            tag = imgs[0]
+            img_at = chunk.find(tag)
+            if brand_at >= 0 and img_at > brand_at:
+                die("black friday card image is not at the top")
+            for needle in ('loading="lazy"', " width=", " height=", " alt="):
+                if needle not in tag:
+                    die(f"black friday card image missing {needle}: {tag}")
+        elif brand_at != 0 and not chunk.startswith("<p"):
+            die("black friday card without a photo does not start with the brand")
+    thumbs = re.findall(r'<img\b[^>]*class="row-thumb"[^>]*>', bf)
+    if len(thumbs) != pictured:
+        die(f"black friday thumbnails {len(thumbs)} != card photos {pictured}")
+    for tag in thumbs:
+        for needle in ('loading="lazy"', " width=", " height=", " alt="):
+            if needle not in tag:
+                die(f"black friday thumbnail missing {needle}: {tag}")
+    for src in re.findall(r'<img\b[^>]*\bsrc="([^"]+)"', bf):
+        if links.is_tracking_url(src) or links.is_blocked_url(src):
+            die(f"black friday image is a bad URL: {src}")
+        rel = src[len(PREFIX):] if PREFIX and src.startswith(PREFIX + "/") else src
+        rel = rel.lstrip("/")
+        if not rel.startswith("media/products/") or not os.path.isfile(os.path.join(OUT, rel)):
+            die(f"black friday image is not a hosted file: {src}")
+    home = open(os.path.join(OUT, "index.html"), encoding="utf-8").read()
+    for chunk in re.findall(r'<article class="card">(.*?)</article>', home, re.S):
+        imgs = img_re.findall(chunk)
+        if not imgs:
+            continue
+        if chunk.find(imgs[0]) > chunk.find('class="meta"'):
+            die("home card image is not at the top")
+    print(f"photos ok: black friday cards {len(cards)}, with a photo {pictured}")
 
 
 if __name__ == "__main__":

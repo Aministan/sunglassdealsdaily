@@ -56,7 +56,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB2140",
-          "image": "https://images2.ray-ban.com//prod-onecp-record-files/pieyewear/aa3935f3-184a-4e17-a880-b35d00c65c8a/0RB2140__901__P21__shad__qt.png?impolicy=RB_RB_FBShare",
+          "image": "/media/products/ray-ban-wayfarer-rb2140.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "The public product page opened on this date did not show a price in the page text we could read."
         }
       ]
@@ -83,7 +85,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB2132",
-          "image": null,
+          "image": "/media/products/ray-ban-new-wayfarer-rb2132.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -110,7 +114,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB3025",
-          "image": null,
+          "image": "/media/products/ray-ban-aviator-rb3025.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         },
         {
@@ -121,7 +127,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB3025",
-          "image": null,
+          "image": "/media/products/ray-ban-aviator-rb3025-2.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Page title says polarized. No price was readable."
         }
       ]
@@ -148,7 +156,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB3016",
-          "image": null,
+          "image": "/media/products/ray-ban-clubmaster-rb3016.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -175,7 +185,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB3447",
-          "image": null,
+          "image": "/media/products/ray-ban-round-metal-rb3447.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -202,7 +214,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB4171",
-          "image": null,
+          "image": "/media/products/ray-ban-erika-rb4171.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -229,7 +243,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB4165",
-          "image": null,
+          "image": "/media/products/ray-ban-justin-rb4165.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -256,7 +272,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "RB3548",
-          "image": null,
+          "image": "/media/products/ray-ban-hexagonal-rb3548.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "No price was readable on the public page text we opened."
         }
       ]
@@ -283,7 +301,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9102",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/1f72ef2f-ec05-4ccc-b594-b35f0080ecab/0OO9102__9102E8__P21__shad__qt.png",
+          "image": "/media/products/oakley-holbrook.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $174.00 on this colorway."
         },
         {
@@ -294,7 +314,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9102",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/8d3b8cfc-a3e7-411a-814f-b35e0188d286/0OO9102__9102D6__P21__shad__qt.png",
+          "image": "/media/products/oakley-holbrook-2.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $237.00 on this polarized colorway."
         }
       ]
@@ -321,7 +343,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9013",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/5755a2da-e1de-415e-a42d-b35f0057a232/0OO9013__9013C4__P21__shad__qt.png",
+          "image": "/media/products/oakley-frogskins.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $160.00 on this colorway."
         }
       ]
@@ -348,7 +372,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9406",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/34ad4760-a813-4142-96af-b3610056ecd8/0OO9406__940690__P21__shad__qt.png",
+          "image": "/media/products/oakley-sutro.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $203.00 and marked the colorway Most Wanted."
         }
       ]
@@ -375,7 +401,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9496",
-          "image": null,
+          "image": "/media/products/oakley-sutro-lite-s.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Price left blank. The number in a search extract was not stored, because this row was not given the same direct page read as the priced Oakley colorways."
         }
       ]
@@ -402,7 +430,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9208",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/38bb5876-a40c-4880-9348-b35f004b5e7c/0OO9208__920852__P21__shad__qt.png",
+          "image": "/media/products/oakley-radar-ev-path.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $244.00 on this colorway."
         }
       ]
@@ -429,7 +459,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9188",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/d5f483ce-afd6-4844-ba82-b35f004c727e/0OO9188__918873__P21__shad__qt.png",
+          "image": "/media/products/oakley-flak-2-xl.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $214.00 on this colorway."
         }
       ]
@@ -456,7 +488,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9014",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/6613e9b9-6e3f-4b8d-9337-b3a1013bad18/0OO9014__9014D3__P21__shad__qt.png",
+          "image": "/media/products/oakley-gascan.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $112.00 and the label Last Chance."
         }
       ]
@@ -483,7 +517,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9290",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/641fe7b2-3742-492f-8693-b35e01503e8b/0OO9290__929020__P21__shad__qt.png",
+          "image": "/media/products/oakley-jawbreaker.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $268.00 on this colorway."
         }
       ]
@@ -510,7 +546,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9144",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/040e38ba-e814-4d8b-980b-b35d012946c5/0OO9144__914401__STD__shad__qt.png",
+          "image": "/media/products/oakley-half-jacket-2.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $71.00 and said unavailable online.",
           "availability_note": "Unavailable online"
         }
@@ -538,7 +576,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9154",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/c8ea2ebc-d000-43ad-bb58-b360010347eb/0OO9154__915467__P21__shad__qt.png",
+          "image": "/media/products/oakley-half-jacket-2-xl.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $225.00 on this polarized colorway."
         }
       ]
@@ -565,7 +605,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "OO9265",
-          "image": "https://assets2.oakley.com/prod-onecp-record-files/pieyewear/7e9d84f2-167c-43d7-b5c2-b35f0045bb21/0OO9265__926522__P21__shad__qt.png",
+          "image": "/media/products/oakley-latch.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Oakley showed $196.00 on this colorway."
         }
       ]
@@ -727,7 +769,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "MJ000321",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/52b41f64-e4e7-42a5-abdc-b360017c093d/0MJ000321__1190_030A.png",
+          "image": "/media/products/maui-jim-peahi.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $289.00."
         }
       ]
@@ -754,7 +798,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "MJ000452",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/1e095ac0-3ae1-415f-a214-b35e005340f1/0MJ000452__4400C4_030A.png",
+          "image": "/media/products/maui-jim-red-sands.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $259.00."
         }
       ]
@@ -781,7 +827,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PO0714",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/e40be520-2f47-4ab7-9b8c-b35d017aedcf/0PO0714__24_31__P21__shad__qt.png",
+          "image": "/media/products/persol-714.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $452.00."
         }
       ]
@@ -808,7 +856,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PO0649",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/484c4a15-06ef-4b6b-a5db-b3a0017d8da1/0PO0649__1234R5__P21__shad__qt.png",
+          "image": "/media/products/persol-649.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $363.00."
         }
       ]
@@ -835,7 +885,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PR 17WS",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/1519881b-2a1e-4bf6-ad4a-b3a1007215ff/0PR_17WS__21D5J2__P21__shad__qt.png",
+          "image": "/media/products/prada-pr-17ws.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $548.00."
         }
       ]
@@ -862,7 +914,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PR 19ZS",
-          "image": null,
+          "image": "/media/products/prada-pr-19zs.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Open the Sunglass Hut page for today's price."
         }
       ]
@@ -889,7 +943,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PR 06YS",
-          "image": null,
+          "image": "/media/products/prada-pr-06ys.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Open the Sunglass Hut page for today's price."
         }
       ]
@@ -916,7 +972,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "PR 65ZS",
-          "image": null,
+          "image": "/media/products/prada-pr-65zs.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Open the Sunglass Hut page for today's price."
         }
       ]
@@ -943,7 +1001,9 @@
           "currency": "USD",
           "price_checked": "2026-11-15",
           "sku": "GG1494S",
-          "image": "https://assets2.sunglasshut.com/prod-onecp-record-files/pieyewear/cee14af5-7d15-4aff-92bb-b3630057355d/0GC002214__4402B1_030A.png",
+          "image": "/media/products/gucci-gg1494s.jpg",
+          "image_width": 600,
+          "image_height": 300,
           "note": "Sunglass Hut showed $530.00."
         }
       ]
