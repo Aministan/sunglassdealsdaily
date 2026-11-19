@@ -351,6 +351,7 @@ def page(path, title, desc, body, jsonld=None, index=True, image=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="fo-verify" content="fdea0e55-7973-4a60-a1cb-c6f89e0981bc" />
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(canon)}">
